@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Pusaka</string>
+
+    <array name="tab_name">
+        <item>Home</item>
+        <item>Search</item>
+        <item>Share</item>
+        <item>News</item>
+        <item>Profile</item>
+    </array>
+
+    <!-- OnBoard Screen. -->
+
+    <string name="ob_header1">Temukan Banyak\nSahabat Baru</string>
+    <string name="ob_header2">Jelajahi Tempat Baru\ndengan Misi Seru</string>
+    <string name="ob_header3">Belajar Lebih Seru\ndengan Aksi Nyata</string>
+    <string name="ob_header4">Tukar Poin dengan\nBanyak Hadiah Menarik</string>
+
+    <string name="ob_already_registered">Kamu sudah terdaftar?</string>
+    <string name="ob_login">Masuk</string>
+    <string name="ob_register_now">Daftar Sekarang</string>
+
+    <!--Login Screen-->
+    <string name="login_header">Bersiap untuk Ciptakan Perubahan!</string>
+    <string name="login_dont_have_account">Belum memiliki akun?</string>
+    <string name="login_email">Email</string>
+    <string name="login_email_hint">Alamat Email Kamu</string>
+    <string name="login_password">Password</string>
+    <string name="login_password_hint">Kata Sandi Kamu</string>
+    <string name="login_not_remember">Tidak Ingat?</string>
+    <string name="login_3rd_party">Atau masuk dengan:</string>
+    <string name="login_login_now">Masuk Sekarang</string>
+
+    <!--Register Screen-->
+    <string name="register_title">Daftar Akun</string>
+    <string name="register_data_title">D&#160;a&#160;t&#160;a&#160;&#160;&#160;P&#160;u&#160;s&#160;a&#160;k&#160;a&#160;w&#160;a&#160;n</string>
+    <string name="register_male">Laki-Laki</string>
+    <string name="register_female">Perempuan</string>
+    <string name="register_full_name">Nama Lengkap</string>
+    <string name="register_full_name_hint">Nama Lengkap Kamu</string>
+    <string name="register_school">Sekolah</string>
+    <string name="register_school_hint">Nama Sekolah Kamu</string>
+    <string name="register_account_name">Nama Akun</string>
+    <string name="register_account_name_hint">Nama Akun Kamu</string>
+    <string name="register_email">Email</string>
+    <string name="register_email_hint">Alamat Email Kamu</string>
+    <string name="register_password">Password</string>
+    <string name="register_password_hint">Kata Sandi Kamu</string>
+    <string name="register_confirm_password">Konfirmasi Password</string>
+    <string name="register_confirm_password_hint">Konfirmasi Kata Sandi Kamu</string>
+
+    <!-- Dialogs -->
+    <string name="loading_dialog_text">Silahkan tunggu&#8230;</string>
+
+</resources>
