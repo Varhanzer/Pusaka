@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import id.beneranindonesia.pusaka.R;
+import id.beneranindonesia.pusaka.activities.Mission.MissionDetailActivity;
 import id.beneranindonesia.pusaka.activities.OnBoard.OnBoardingActivity;
 import id.beneranindonesia.pusaka.utils.Session;
 
@@ -16,11 +17,17 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
         Session.getInstance().initalizeSession(this);
+
         if (Session.getInstance().isLogin(getApplicationContext())) {
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         } else {
-            startActivity(new Intent(SplashActivity.this, OnBoardingActivity.class));
+            Intent intent = new Intent(this, OnBoardingActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         }
     }
 }

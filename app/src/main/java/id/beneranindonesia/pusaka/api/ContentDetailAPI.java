@@ -12,42 +12,44 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import id.beneranindonesia.pusaka.models.ContentDetail;
 import id.beneranindonesia.pusaka.models.ContentList;
 import id.beneranindonesia.pusaka.utils.Session;
 
-public class ContentListAPI implements Token.TokenListener {
+public class ContentDetailAPI implements Token.TokenListener {
 
     public interface Listener {
-        void contentListReceived(ArrayList<ContentList> list);
-        void contentListDidFailWith(int statusCode, String message);
+        void contentDetailReceived(ContentDetail missionDetail);
+        void contentDetailDidFailWith(int statusCode, String message);
     }
 
-    private Token token;
     private HashMap<String, String> params;
 
     public Listener listener;
 
-    public void get() {
+    public void get(String missionID) {
         try {
             JSONObject json = new JSONObject();
             json.put("lang", "id");
             json.put("userID", Session.getInstance().getUserID());
+            json.put("missionID", missionID);
 
-            System.out.println("Content List Params: " + json);
+            System.out.println(json);
 
             HashMap<String, String > params = new HashMap<>();
             params.put("pikachu", json.toString());
 
             this.params  = params;
-            token = new Token();
+            Token token = new Token();
             token.listener = this;
             token.get();
-        } catch (JSONException e) { listener.contentListDidFailWith(0, "Failed to create JSONObject"); }
+
+        } catch (JSONException e) { listener.contentDetailDidFailWith(0, "Failed to create JSONObject"); }
     }
 
     @Override
     public void tokenReceived(String access_token, String token_Type, String sid, String expires_in) {
-        AndroidNetworking.post(URLs.CONTENT_LIST_URL)
+        AndroidNetworking.post(URLs.CONTENT_DETAIL_URL)
                 .addHeaders("Authorization", "bearer " + access_token)
                 .addBodyParameter(params)
                 .setPriority(Priority.IMMEDIATE)
@@ -55,27 +57,20 @@ public class ContentListAPI implements Token.TokenListener {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println("Content list response: ");
-                        System.out.println(response);
                         try {
-                            JSONObject obj = new JSONObject(response);
-                            JSONArray listContent = obj.getJSONArray("listContent");
-
-                            ArrayList<ContentList> contentLists = new ArrayList<>();
-
-                            for(int i = 0; i < listContent.length(); i++) {
-                                contentLists.add(new ContentList(listContent.getJSONObject(i)));
-                            }
-
-                            listener.contentListReceived(contentLists);
-
+                            listener.contentDetailReceived(new ContentDetail(new JSONObject(response)));
                         } catch (JSONException e) {
-                            listener.contentListDidFailWith(0, "General Error");
+                            listener.contentDetailDidFailWith(0, "Failed to convert json");
                         }
+                        System.out.println("Content Detail response: ");
+                        System.out.println(response);
                     }
+
                     @Override
                     public void onError(ANError anError) {
-                        listener.contentListDidFailWith(anError.getErrorCode(), anError.getMessage());
+                        listener.contentDetailDidFailWith(anError.getErrorCode(), anError.getMessage());
+                        System.out.println("Error code: " + anError.getErrorCode());
+                        System.out.println("Message: " + anError.getMessage());
                     }
                 });
     }
@@ -84,26 +79,8 @@ public class ContentListAPI implements Token.TokenListener {
     public void tokenDidFail(int errorCode, String message) {
         System.out.println("Error code: " + errorCode);
         System.out.println("Message: " + message);
-        listener.contentListDidFailWith(errorCode, message);
+        listener.contentDetailDidFailWith(errorCode, message);
     }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

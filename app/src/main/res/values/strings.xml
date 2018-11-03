@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Pusaka</string>
+    <string name="google_maps_api_key">AIzaSyBq0ayc-WTGRyoeRy6hGPInblAEVdeSXF4</string>
 
     <array name="tab_name">
         <item>Home</item>
@@ -49,7 +50,57 @@
     <string name="register_confirm_password">Konfirmasi Password</string>
     <string name="register_confirm_password_hint">Konfirmasi Kata Sandi Kamu</string>
 
+    <!-- Main Fragment -->
+    <string name="dummy_total_participant">50 dari 120 partisipan</string>
+    <string name="dummy_mission_date">18 Okt 2018</string>
+    <string name="total_participant">%1$s dari %2$s pertisipan</string>
+
+    <!-- Mission Detail -->
+    <string name="mission_detail_participant">%1$s/%2$s partisipan</string>
+    <string name="mission_detail_mission_taken">Misi Telah Diambil</string>
+    <string name="mission_detail_take_mission">Ambil Misi</string>
+
     <!-- Dialogs -->
     <string name="loading_dialog_text">Silahkan tunggu&#8230;</string>
+    
+    <string name="btn_more_description">Selengkapnya&#8230;</string>
+    <string name="address_uppercased">ADDRESS</string>
+    <string name="take_mission">Ambil Misi</string>
+
+    <string name="take_mission_popup_title">Siap Ambil Misi Ini?</string>
+    <string name="take_mission_popup_message">Poin dan petualangan seru menanti kamu di misi ini! Apakah kamu yakin ingin mengambil misi ini?</string>
+    <string name="take_mission_yes">Ya</string>
+    <string name="take_mission_no">Tidak</string>
+    
+    <string name="dummy_address">Jl. Abdurahman Saleh No. 26, RT. 4/RW. 5, Senen, Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10410</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat…</string>
 
 </resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width  = "match_parent"
+    android:layout_height = "match_parent"
+    android:gravity       = "center"
+    xmlns:android         = "http://schemas.android.com/apk/res/android"
+    xmlns:app             = "http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width          = "match_parent"
+        android:layout_height         = "wrap_content"
+        app:cardBackgroundColor       = "@color/white"
+        android:layout_centerInParent = "true"
+        app:cardCornerRadius          = "15dp">
+        
+        <LinearLayout
+            android:layout_width        = "match_parent"
+            android:layout_height       = "wrap_content"
+            android:orientation         = "vertical"
+            android:layout_marginTop    = "25dp"
+            android:layout_marginBottom = "25dp">
+
+            <TextView
+                android:text               = "@string/take_mission_popup_title"
+                android:textSize           = "24sp"
+                android:textStyle          = "bold"
+                android:textColor          = "@color/dark_violet"
+                android:layout_width       = "match_parent"
+                android:layout_height      = "wrap_content"
+                android:layout_marginLeft  = "16dp"
+                android:layout_marginStart = "16dp"
+                android:layout_marginEnd   = "16dp"
+                android:layout_marginRight = "16dp" />
+
+            <TextView
+                android:text               = "@string/take_mission_popup_message"
+                android:textSize           = "18sp"
+                android:textColor          = "@color/dark_violet"
+                android:layout_width       = "match_parent"
+                android:layout_height      = "wrap_content"
+                android:layout_marginTop   = "16dp"
+                android:layout_marginLeft  = "16dp"
+                android:layout_marginStart = "16dp"
+                android:layout_marginEnd   = "16dp"
+                android:layout_marginRight = "16dp" />
+
+            <LinearLayout
+                android:layout_width       = "match_parent"
+                android:layout_height      = "40dp"
+                android:layout_marginTop   = "24dp"
+                android:layout_marginEnd   = "16dp"
+                android:layout_marginRight = "16dp"
+                android:gravity            = "end"
+                android:orientation        = "horizontal">
+
+                <Button
+                    android:text               = "@string/take_mission_no"
+                    android:textColor          = "@color/violet_trans_80"
+                    android:textSize           = "16sp"
+                    android:background         = "@color/transparent"
+                    android:layout_width       = "wrap_content"
+                    android:layout_height      = "match_parent"
+                    android:layout_marginRight = "16dp"
+                    android:layout_marginEnd   = "16dp" />
+
+                <Button
+                    android:id                 ="@+id/btn_yes"
+                    android:text               = "@string/take_mission_yes"
+                    android:textColor          = "@color/white"
+                    android:background         = "@color/java_blue"
+                    android:textSize           = "16sp"
+                    android:layout_width       = "wrap_content"
+                    android:layout_height      = "match_parent" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -5,12 +5,15 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 public class SignUpAPI implements Token.TokenListener {
 
     public interface SignUpAPiListener {
-        void signUpSuccess();
+        void signUpSuccess(String userID);
         void signUpFailed(int errorCode, String message);
     }
 
@@ -36,7 +39,14 @@ public class SignUpAPI implements Token.TokenListener {
                .getAsString(new StringRequestListener() {
                    @Override
                    public void onResponse(String response) {
-                       listener.signUpSuccess();
+                       System.out.println(response);
+                       try {
+                           JSONObject json = new JSONObject(response);
+                           String userID = json.getString("userID");
+                           listener.signUpSuccess(userID);
+                       } catch (JSONException e) {
+                           listener.signUpFailed(0, "Failed to decode json");
+                       }
                    }
                    @Override
                    public void onError(ANError anError) {

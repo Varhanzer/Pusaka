@@ -1,5 +1,6 @@
 package id.beneranindonesia.pusaka.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import id.beneranindonesia.pusaka.activities.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import id.beneranindonesia.pusaka.activities.Mission.MissionDetailActivity;
 import id.beneranindonesia.pusaka.adapters.ContentListAdapter;
 import id.beneranindonesia.pusaka.api.ContentListAPI;
 import id.beneranindonesia.pusaka.models.ContentList;
@@ -63,21 +65,24 @@ public class HomeFragment extends BaseFragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-
-//        ButterKnife.bind(this, view);
-
         Bundle args = getArguments();
         if (args != null) {
             fragCount = args.getInt(ARGS_INSTANCE);
         }
 
         adapter      = new ContentListAdapter(getContext(), contentLists);
+        adapter.listener = new ContentListAdapter.OnClickListener() {
+            @Override
+            public void selectedItem(ContentList contentList) {
+                Intent intent = new Intent(getActivity(), MissionDetailActivity.class);
+                intent.putExtra("MISSION_ID", contentList.getMissionID());
+                startActivity(intent);
+            }
+        };
+
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-
-        getContentList();
 
         return view;
     }
@@ -85,6 +90,8 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        getContentList();
 
 //        btnClickMe.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -107,6 +114,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void getContentList() {
+        System.out.println("Getting content list...");
         if (loadingDialog == null) loadingDialog = new LoadingDialog(getActivity());
         loadingDialog.showDialog();
 

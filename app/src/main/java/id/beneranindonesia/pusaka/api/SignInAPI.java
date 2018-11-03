@@ -55,6 +55,7 @@ public class SignInAPI implements Token.TokenListener {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
+                        System.out.println(response);
                         try {
                             JSONObject json = new JSONObject(response);
                             String userID    = json.getString("userID");

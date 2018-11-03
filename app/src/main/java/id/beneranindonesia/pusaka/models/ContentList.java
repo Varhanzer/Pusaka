@@ -12,6 +12,9 @@ public class ContentList {
     private String misDesc;
     private String reviewCount;
     private String point;
+    private String dayStart;
+    private String maxParticipant;
+    private String applicants;
 
     public ContentList(JSONObject json) {
         try { missionID = json.getString("missionID"); } catch (JSONException e) { missionID = ""; }
@@ -21,6 +24,10 @@ public class ContentList {
         try { misDesc = json.getString("misDesc"); } catch (JSONException e) { misDesc = ""; }
         try { reviewCount = json.getString("reviewCount"); } catch (JSONException e) { reviewCount = ""; }
         try { point = json.getString("point"); } catch (JSONException e) { point = ""; }
+        try { dayStart = json.getString("dayStart"); } catch (JSONException e) { dayStart = ""; }
+        try { maxParticipant = json.getString("maxParticipant"); } catch (JSONException e) { maxParticipant = ""; }
+        try { applicants = json.getString("applicants"); } catch (JSONException e) { applicants = ""; }
+
     }
 
     public String getMissionID() {
@@ -77,6 +84,30 @@ public class ContentList {
 
     public void setPoint(String point) {
         this.point = point;
+    }
+
+    public String getDayStart() {
+        return dayStart;
+    }
+
+    public void setDayStart(String dayStart) {
+        this.dayStart = dayStart;
+    }
+
+    public String getMaxParticipant() {
+        return maxParticipant;
+    }
+
+    public void setMaxParticipant(String maxParticipant) {
+        this.maxParticipant = maxParticipant;
+    }
+
+    public String getApplicants() {
+        return applicants;
+    }
+
+    public void setApplicants(String applicants) {
+        this.applicants = applicants;
     }
 }
 

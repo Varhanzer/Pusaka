@@ -22,6 +22,7 @@ import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.MainActivity;
 import id.beneranindonesia.pusaka.api.SignUpAPI;
 import id.beneranindonesia.pusaka.api.Token;
+import id.beneranindonesia.pusaka.utils.Session;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,8 +40,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         et_fullname         = findViewById(R.id.txt_full_name);
         et_school           = findViewById(R.id.txt_school);
         et_account_name     = findViewById(R.id.txt_account_name);
-        et_email            = findViewById(R.id.txtEmail);
-        et_password         = findViewById(R.id.txtPassword);
+        et_email            = findViewById(R.id.txt_email);
+        et_password         = findViewById(R.id.txt_password);
         et_confirm_password = findViewById(R.id.txt_confirm_password);
 
         AndroidNetworking.initialize(getApplicationContext());
@@ -81,23 +82,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         if (view == registerBtn) {
-//            String fullname        = et_fullname.getText().toString();
-//            String schollName      = et_school.getText().toString();
-//            String accountName     = et_account_name.getText().toString();
-//            String email           = et_email.getText().toString();
-//            String password        = et_password.getText().toString();
-//            String confirmPassword = et_confirm_password.getText().toString();
-//            if (!password.equals(confirmPassword)) {
-//                return;
-//            }
+            String fullname        = et_fullname.getText().toString();
+            String schollName      = et_school.getText().toString();
+            final String accountName     = et_account_name.getText().toString();
+            String email           = et_email.getText().toString();
+            String username        = et_account_name.getText().toString();
+            String password        = et_password.getText().toString();
+            String confirmPassword = et_confirm_password.getText().toString();
+            if (!password.equals(confirmPassword)) {
+                return;
+            }
             try {
                 JSONObject json = new JSONObject();
-                json.put("email", "testsignup@gmail.com");
-                json.put("password", "riscel123");
+                json.put("email", email);
+                json.put("password", password);
                 json.put("lang", "id");
+
+                json.put("userName", username);
+                json.put("fullName", fullname);
+
                 json.put("cardType", 1);
                 json.put("cardImage", "woahhhah.jpg");
                 json.put("cardNumber", "3882348484842");
+
+                System.out.println(json);
 
                 HashMap<String, String> params = new HashMap<>();
                 params.put("pikachu", json.toString());
@@ -105,7 +113,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 signUpAPI = new SignUpAPI();
                 signUpAPI.listener = new SignUpAPI.SignUpAPiListener() {
                     @Override
-                    public void signUpSuccess() {
+                    public void signUpSuccess(String userID) {
+                        Session.getInstance().saveUser(RegisterActivity.this, userID, accountName, "");
+                        Session.getInstance().initalizeSession(RegisterActivity.this);
                         System.out.println("Sign up success");
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         startActivity(intent);

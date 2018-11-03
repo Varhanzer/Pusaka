@@ -11,6 +11,8 @@ import android.widget.EditText;
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.MainActivity;
 import id.beneranindonesia.pusaka.api.SignInAPI;
+import id.beneranindonesia.pusaka.utils.LoadingDialog;
+import id.beneranindonesia.pusaka.utils.Session;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, SignInAPI.Listener {
 
@@ -20,6 +22,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText txt_password;
 
     private SignInAPI signInAPI;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+        if (loadingDialog == null)
+            loadingDialog = new LoadingDialog(this);
+        loadingDialog.showDialog();
+
         if (view == btn_get_started) {
             if (signInAPI == null) {
                 signInAPI = new SignInAPI();
@@ -50,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void signInSuccess() {
+        Session.getInstance().initalizeSession(this);
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -57,6 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void signInFailed(int statusCode, String message) {
-
+        System.out.println(statusCode);
+        System.out.println(message);
     }
 }

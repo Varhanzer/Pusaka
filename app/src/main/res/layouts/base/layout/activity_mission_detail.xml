@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android         = "http://schemas.android.com/apk/res/android"
+    xmlns:app             = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools           = "http://schemas.android.com/tools"
+    android:layout_width  = "match_parent"
+    android:layout_height = "match_parent"
+    android:background    = "@color/white"
+    tools:context         = ".activities.Mission.MissionDetailActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id                = "@+id/appBar"
+        android:layout_width      = "match_parent"
+        android:layout_height     = "wrap_content"
+        android:theme             = "@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows = "true" >
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width            = "match_parent"
+            android:layout_height           = "350dp"
+            app:layout_scrollFlags          = "scroll|exitUntilCollapsed"
+            app:contentScrim                = "?attr/colorPrimary"
+            app:expandedTitleTextAppearance = "@android:color/transparent"
+            android:fitsSystemWindows       = "true" >
+
+            <ImageView
+                android:src="@drawable/dummy_background_paris"
+                android:layout_width       = "match_parent"
+                android:layout_height      = "350dp"
+                android:contentDescription = "@string/app_name"
+                android:scaleType          = "centerCrop"
+                app:layout_collapseMode    = "parallax" />
+
+            <android.support.v7.widget.Toolbar
+                android:id              = "@+id/toolbar"
+                android:layout_width    = "match_parent"
+                android:layout_height   = "?attr/actionBarSize"
+                app:popupTheme          = "@style/ThemeOverlay.AppCompat.Light"
+                app:title               = "@string/app_name"
+                app:layout_collapseMode = "pin" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width  = "match_parent"
+        android:layout_height = "wrap_content"
+        android:clipToPadding = "true"
+        app:layout_behavior   = "@string/appbar_scrolling_view_behavior" >
+
+        <LinearLayout
+            android:layout_width       = "match_parent"
+            android:layout_height      = "wrap_content"
+            android:orientation        = "vertical"
+            android:layout_marginLeft  = "16dp"
+            android:layout_marginStart = "16dp"
+            android:layout_marginRight = "16dp"
+            android:layout_marginEnd   = "16dp">
+
+            <!-- Title and Subtitle -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id                  ="@+id/txtOrg"
+                    android:textSize            = "16sp"
+                    android:textColor           = "@color/violet_trans_80"
+                    android:layout_width        = "wrap_content"
+                    android:layout_height       = "wrap_content"
+                    android:layout_marginTop    = "16dp"
+                    android:layout_marginBottom = "6dp"/>
+
+                <TextView
+                    android:id                  ="@+id/txtMissionName"
+                    android:textSize            = "28sp"
+                    android:textStyle           = "bold"
+                    android:textColor           = "@color/violet_trans_80"
+                    android:layout_width        = "wrap_content"
+                    android:layout_height       = "wrap_content" />
+
+            </LinearLayout>
+
+            <!-- Separator -->
+            <View
+                android:layout_width        = "match_parent"
+                android:layout_height       = "1dp"
+                android:layout_marginTop    = "16dp"
+                android:layout_marginBottom = "16dp"
+                android:background          = "?android:attr/listDivider"/>
+
+            <!-- Mission Info -->
+            <LinearLayout
+                android:layout_width  = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation   = "vertical">
+
+                <!-- Total participant -->
+                <LinearLayout
+                    android:orientation        = "horizontal"
+                    android:layout_width       = "match_parent"
+                    android:layout_height      = "wrap_content"
+                    android:layout_marginTop   = "12dp" >
+
+                    <ImageView
+                        android:src                = "@drawable/gray_circle"
+                        android:layout_width       = "25dp"
+                        android:layout_height      = "25dp"
+                        android:contentDescription = "@string/app_name"/>
+
+                    <TextView
+                        android:id                 = "@+id/txtParticipant"
+                        android:text               = "50/120 partisipan"
+                        android:textSize           = "16dp"
+                        android:textColor          = "@color/secondary_text"
+                        android:layout_width       = "0dp"
+                        android:layout_height      = "wrap_content"
+                        android:layout_weight      = "1"
+                        android:layout_marginLeft  = "12dp"
+                        android:layout_marginStart = "12dp"
+                        android:layout_gravity     = "center_vertical"/>
+
+                </LinearLayout>
+
+                <!-- Duration -->
+                <LinearLayout
+                    android:orientation        = "horizontal"
+                    android:layout_width       = "match_parent"
+                    android:layout_height      = "wrap_content"
+                    android:layout_marginTop   = "12dp" >
+
+                    <ImageView
+                        android:src                = "@drawable/gray_circle"
+                        android:layout_width       = "25dp"
+                        android:layout_height      = "25dp"
+                        android:contentDescription = "@string/app_name"/>
+
+                    <TextView
+                        android:text               = "2 Jam"
+                        android:textSize           = "16dp"
+                        android:textColor          = "@color/secondary_text"
+                        android:layout_width       = "0dp"
+                        android:layout_height      = "wrap_content"
+                        android:layout_weight      = "1"
+                        android:layout_marginLeft  = "12dp"
+                        android:layout_marginStart = "12dp" />
+
+                </LinearLayout>
+
+                <!-- Mission Date -->
+                <LinearLayout
+                    android:orientation        = "horizontal"
+                    android:layout_width       = "match_parent"
+                    android:layout_height      = "wrap_content"
+                    android:layout_marginTop   = "12dp" >
+
+                    <ImageView
+                        android:src                = "@drawable/gray_circle"
+                        android:layout_width       = "25dp"
+                        android:layout_height      = "25dp"
+                        android:contentDescription = "@string/app_name"/>
+
+                    <TextView
+                        android:id                 = "@+id/txtMissionStartDate"
+                        android:text               = "18 Oktober 2018, 17.00 WIB"
+                        android:textSize           = "16dp"
+                        android:textColor          = "@color/secondary_text"
+                        android:layout_width       = "0dp"
+                        android:layout_height      = "wrap_content"
+                        android:layout_weight      = "1"
+                        android:layout_marginLeft  = "12dp"
+                        android:layout_marginStart = "12dp" />
+
+                </LinearLayout>
+
+                <!-- Mission location -->
+                <LinearLayout
+                    android:orientation        = "horizontal"
+                    android:layout_width       = "match_parent"
+                    android:layout_height      = "wrap_content"
+                    android:layout_marginTop   = "12dp" >
+
+                    <ImageView
+                        android:src                = "@drawable/gray_circle"
+                        android:layout_width       = "25dp"
+                        android:layout_height      = "25dp"
+                        android:contentDescription = "@string/app_name"/>
+
+                    <TextView
+                        android:id                 = "@+id/txtMissionPlace"
+                        android:text               = "Museum Kebangkitan Nasional, Jakarta Pusat"
+                        android:textSize           = "16dp"
+                        android:textColor          = "@color/secondary_text"
+                        android:layout_width       = "0dp"
+                        android:layout_height      = "wrap_content"
+                        android:layout_weight      = "1"
+                        android:layout_marginLeft  = "12dp"
+                        android:layout_marginStart = "12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Separator -->
+            <View
+                android:layout_width        = "match_parent"
+                android:layout_height       = "1dp"
+                android:layout_marginTop    = "16dp"
+                android:layout_marginBottom = "16dp"
+                android:background          = "?android:attr/listDivider"/>
+
+            <!-- Mission Description -->
+            <LinearLayout
+                android:layout_width  = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation   = "vertical" >
+
+                <TextView
+                    android:id            = "@+id/txtMissionDesc"
+                    android:text          = "@string/lorem_ipsum"
+                    android:textColor     = "@color/secondary_text"
+                    android:textSize      = "16sp"
+                    android:layout_width  = "match_parent"
+                    android:layout_height = "wrap_content"
+                    android:maxLines      = "5" />
+                
+                <Button
+                    android:text          = "@string/btn_more_description"
+                    android:textColor     = "@color/violet_trans_80"
+                    android:textSize      = "16sp"
+                    android:layout_width  = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:background    = "@android:color/transparent"/>
+
+            </LinearLayout>
+
+            <!-- Separator -->
+            <View
+                android:layout_width        = "match_parent"
+                android:layout_height       = "1dp"
+                android:layout_marginTop    = "4dp"
+                android:layout_marginBottom = "16dp"
+                android:background          = "?android:attr/listDivider"/>
+
+            <!-- Address -->
+            <LinearLayout
+                android:layout_width  = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation   = "horizontal"
+                android:weightSum     = "1" >
+
+                <!-- Address Detail -->
+                <LinearLayout
+                    android:layout_width  = "0dp"
+                    android:layout_height = "wrap_content"
+                    android:layout_weight = "0.75"
+                    android:orientation   = "vertical">
+
+                    <TextView
+                        android:text          = "@string/address_uppercased"
+                        android:textStyle     = "bold"
+                        android:textSize      = "16sp"
+                        android:textColor     = "@color/secondary_text"
+                        android:layout_width  = "match_parent"
+                        android:layout_height = "wrap_content"
+                        android:layout_marginBottom = "8dp" />
+
+                    <TextView
+                        android:id            = "@+id/txtMissionAddress"
+                        android:text          = "@string/dummy_address"
+                        android:textColor     = "@color/secondary_text"
+                        android:textSize      = "16sp"
+                        android:layout_width  = "wrap_content"
+                        android:layout_height = "wrap_content" />
+
+                </LinearLayout>
+
+                <fragment
+                    android:id            = "@+id/map"
+                    android:layout_width  = "0dp"
+                    android:layout_height = "100dp"
+                    android:layout_weight = "0.25"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    tools:context         = ".MapsActivity"
+                    android:name          = "com.google.android.gms.maps.SupportMapFragment" />
+
+            </LinearLayout>
+
+            <!-- Separator -->
+            <View
+                android:layout_width        = "match_parent"
+                android:layout_height       = "1dp"
+                android:layout_marginTop    = "16dp"
+                android:layout_marginBottom = "16dp"
+                android:background          = "?android:attr/listDivider"/>
+
+            <!-- Button Take Mission -->
+
+            <Button
+                android:id                  ="@+id/btnTakeMission"
+                android:text                = "@string/take_mission"
+                android:textColor           = "@color/white"
+                android:background          = "@color/selected_dot"
+                android:layout_width        = "match_parent"
+                android:layout_height       = "50dp"
+                android:layout_marginBottom = "16dp"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
