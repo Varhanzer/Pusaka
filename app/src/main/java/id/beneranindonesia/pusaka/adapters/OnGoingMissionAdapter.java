@@ -28,7 +28,7 @@ public class OnGoingMissionAdapter extends RecyclerView.Adapter<OnGoingMissionAd
             txtMissionIssuer = view.findViewById(R.id.txtMissionIssuer);
             txtMissionName   = view.findViewById(R.id.txtMissionName);
             txtMissionDate   = view.findViewById(R.id.txtMissionDate);
-            txtMissionPoint  = view.findViewById(R.id.txtMissionPoint);
+            txtMissionPoint  = view.findViewById(R.id.txtPoint);
             iv_mission       = view.findViewById(R.id.iv_mission);
         }
 

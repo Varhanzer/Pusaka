@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -97,13 +99,17 @@ public class OnGoingMissionFragment extends Fragment implements OnGoingMissionAP
 
     @Override
     public void onGoingMissionListReceived(ArrayList<OnGoingMission> list) {
+        for(OnGoingMission mission: list) {
+            System.out.println(mission.getMisName());
+        }
         this.onGoingMissionList = list;
+        adapter.setItems(list);
         adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onGoingMissionListDidFailWith(int statusCode, String message) {
-
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

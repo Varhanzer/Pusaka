@@ -54,11 +54,8 @@ public class OnGoingMissionAPI implements Token.TokenListener {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        System.out.println("Mission list response: ");
-                        System.out.println(response);
                         try {
-                            JSONObject obj = new JSONObject(response);
-                            JSONArray listContent = obj.getJSONArray("listContent");
+                            JSONArray listContent = new JSONArray(response);
 
                             ArrayList<OnGoingMission> missionList = new ArrayList<>();
 

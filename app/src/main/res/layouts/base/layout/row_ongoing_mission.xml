@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     android:layout_width  = "match_parent"
-    android:layout_height = "match_parent"
+    android:layout_height = "wrap_content"
     xmlns:android         = "http://schemas.android.com/apk/res/android" >
 
     <ImageView
         android:id                       = "@+id/iv_mission"
-        android:src                      = "@drawable/girl"
+        android:src                      = "@drawable/dummy_background_paris"
+        android:scaleType                = "fitXY"
         android:layout_width             = "80dp"
         android:layout_height            = "80dp"
         android:layout_marginTop         = "8dp"
@@ -21,6 +22,8 @@
 
     <TextView
         android:id                 = "@+id/txtMissionIssuer"
+        android:textSize           = "14sp"
+        android:textColor          = "@color/violet_trans_80"
         android:layout_width       = "wrap_content"
         android:layout_height      = "wrap_content"
         android:layout_marginLeft  = "8dp"
@@ -33,15 +36,15 @@
 
     <TextView
         android:id                = "@+id/txtMissionName"
+        android:textSize          = "18sp"
+        android:textColor         = "@color/dark_violet"
         android:layout_width      = "wrap_content"
         android:layout_height     = "wrap_content"
         android:layout_toEndOf    = "@id/iv_mission"
         android:layout_toRightOf  = "@id/iv_mission"
         android:layout_below      = "@id/txtMissionIssuer"
         android:layout_alignLeft  = "@id/txtMissionIssuer"
-        android:layout_alignStart = "@id/txtMissionIssuer"
-        android:layout_alignEnd   = "@id/txtMissionIssuer"
-        android:layout_alignRight = "@id/txtMissionIssuer" />
+        android:layout_alignStart = "@id/txtMissionIssuer" />
 
     <LinearLayout
         android:orientation        = "horizontal"
@@ -51,8 +54,6 @@
         android:layout_toRightOf   = "@id/iv_mission"
         android:layout_alignLeft   = "@id/txtMissionIssuer"
         android:layout_alignStart  = "@id/txtMissionIssuer"
-        android:layout_alignEnd    = "@id/txtMissionIssuer"
-        android:layout_alignRight  = "@id/txtMissionIssuer"
         android:layout_alignBottom = "@id/iv_mission" >
 
         <TextView
