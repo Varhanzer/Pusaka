@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.Base.BaseActivity;
+import id.beneranindonesia.pusaka.activities.MyMission.MyMissionFragment;
 import id.beneranindonesia.pusaka.fragments.BaseFragment;
 import id.beneranindonesia.pusaka.fragments.HomeFragment;
 import id.beneranindonesia.pusaka.fragments.NewsFragment;
@@ -40,8 +41,8 @@ public class MainActivity extends BaseActivity implements
     @BindView(R.id.content_frame)
     FrameLayout contentFrame;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
 
     private int[] mTabIconsSelected = {
             R.drawable.tab_home,
@@ -68,7 +69,7 @@ public class MainActivity extends BaseActivity implements
 
         ButterKnife.bind(this);
 
-        initToolbar();
+//        initToolbar();
 
         initTab();
 
@@ -107,9 +108,9 @@ public class MainActivity extends BaseActivity implements
         });
     }
 
-    private void initToolbar() {
-        setSupportActionBar(toolbar);
-    }
+//    private void initToolbar() {
+//        setSupportActionBar(toolbar);
+//    }
 
     private void initTab() {
         if (bottomTabLayout != null) {
@@ -236,7 +237,7 @@ public class MainActivity extends BaseActivity implements
         // If we have a backstack, show the back button
         if (getSupportActionBar() != null && mNavController != null) {
 
-            updateToolbar();
+//            updateToolbar();
 
         }
     }
@@ -253,7 +254,7 @@ public class MainActivity extends BaseActivity implements
         // If we have a backstack, show the back button
         if (getSupportActionBar() != null && mNavController != null) {
 
-            updateToolbar();
+//            updateToolbar();
 
         }
     }
@@ -265,7 +266,8 @@ public class MainActivity extends BaseActivity implements
             case FragNavController.TAB1:
                 return new HomeFragment();
             case FragNavController.TAB2:
-                return new SearchFragment();
+                return new MyMissionFragment();
+//                return new SearchFragment();
             case FragNavController.TAB3:
                 return new ShareFragment();
             case FragNavController.TAB4:
@@ -287,7 +289,7 @@ public class MainActivity extends BaseActivity implements
 
     public void updateToolbarTitle(String title) {
 
-        getSupportActionBar().setTitle(title);
+//        getSupportActionBar().setTitle(title);
 
     }
 }

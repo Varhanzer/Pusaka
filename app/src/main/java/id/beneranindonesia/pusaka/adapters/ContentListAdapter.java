@@ -19,13 +19,13 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
         void selectedItem(ContentList contentList);
     }
 
-    public class ContentListViewHolder extends RecyclerView.ViewHolder {
+    class ContentListViewHolder extends RecyclerView.ViewHolder {
         private TextView txtMissionName;
         private TextView txtMissionDesc;
         private TextView txtMissionPoint;
         private TextView txtPerticipant;
 
-        public ContentListViewHolder(View view) {
+        ContentListViewHolder(View view) {
             super(view);
             txtMissionName  = view.findViewById(R.id.txtMissionTitle);
             txtMissionDesc  = view.findViewById(R.id.txtMissionDesc);
@@ -33,7 +33,7 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
             txtPerticipant  = view.findViewById(R.id.txtPerticipant);
         }
 
-        public void setDetails(ContentList contentList) {
+        void setDetails(ContentList contentList) {
             txtMissionName.setText(contentList.getMisName());
 //            txtMissionDesc.setText(contentList.getMisDesc());
             txtMissionPoint.setText(contentList.getPoint());

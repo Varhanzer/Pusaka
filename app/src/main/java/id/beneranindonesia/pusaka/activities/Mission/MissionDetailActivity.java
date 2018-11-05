@@ -22,6 +22,7 @@ import id.beneranindonesia.pusaka.activities.MainActivity;
 import id.beneranindonesia.pusaka.api.ContentDetailAPI;
 import id.beneranindonesia.pusaka.api.TakeMissionAPI;
 import id.beneranindonesia.pusaka.models.ContentDetail;
+import id.beneranindonesia.pusaka.utils.LoadingDialog;
 
 public class MissionDetailActivity extends AppCompatActivity implements View.OnClickListener, TakeMissionAPI.Listener {
 
@@ -37,6 +38,7 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
 
     private String missionID;
     private ContentDetail missionDetail;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,7 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
             Button btn_yes = takeMissionDialog.findViewById(R.id.btn_yes);
             btn_yes.setOnClickListener(this);
         } else {
+            takeMissionDialog.hide();
             takeMission();
         }
     }
@@ -130,13 +133,17 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
     }
 
     private void getMissionDetail() {
-        if (contentDetailAPI == null)
-            contentDetailAPI = new ContentDetailAPI();
+        if(loadingDialog == null)
+            loadingDialog = new LoadingDialog(this);
+            loadingDialog.showDialog();
+
+        if (contentDetailAPI == null) contentDetailAPI = new ContentDetailAPI();
         contentDetailAPI.listener = new ContentDetailAPI.Listener() {
             @Override
             public void contentDetailReceived(ContentDetail missionDetail) {
                 MissionDetailActivity.this.missionDetail = missionDetail;
                 updateUI();
+                loadingDialog.hideDialog();
             }
 
             @Override
@@ -155,7 +162,7 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void takeSuccess() {
-
+        getMissionDetail();
     }
 
     @Override

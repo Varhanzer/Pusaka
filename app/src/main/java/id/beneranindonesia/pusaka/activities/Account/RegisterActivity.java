@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 
@@ -22,6 +23,7 @@ import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.MainActivity;
 import id.beneranindonesia.pusaka.api.SignUpAPI;
 import id.beneranindonesia.pusaka.api.Token;
+import id.beneranindonesia.pusaka.utils.LoadingDialog;
 import id.beneranindonesia.pusaka.utils.Session;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private GradientDrawable registerBtnShape;
     private EditText et_fullname, et_school, et_account_name, et_email, et_password, et_confirm_password;
     private SignUpAPI signUpAPI;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +95,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             if (!password.equals(confirmPassword)) {
                 return;
             }
+
             try {
                 JSONObject json = new JSONObject();
                 json.put("email", email);
@@ -110,10 +114,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 HashMap<String, String> params = new HashMap<>();
                 params.put("pikachu", json.toString());
 
+                if (loadingDialog == null)
+                    loadingDialog = new LoadingDialog(this);
+                loadingDialog.showDialog();
+
                 signUpAPI = new SignUpAPI();
                 signUpAPI.listener = new SignUpAPI.SignUpAPiListener() {
                     @Override
                     public void signUpSuccess(String userID) {
+                        loadingDialog.hideDialog();
                         Session.getInstance().saveUser(RegisterActivity.this, userID, accountName, "");
                         Session.getInstance().initalizeSession(RegisterActivity.this);
                         System.out.println("Sign up success");
@@ -122,6 +131,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     }
                     @Override
                     public void signUpFailed(int errorCode, String message) {
+                        loadingDialog.hideDialog();
+                        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                         System.out.println("Error code : " + errorCode);
                         System.out.println("Message : " + message);
                     }

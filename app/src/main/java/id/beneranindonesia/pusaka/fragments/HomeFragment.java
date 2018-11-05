@@ -114,7 +114,6 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void getContentList() {
-        System.out.println("Getting content list...");
         if (loadingDialog == null) loadingDialog = new LoadingDialog(getActivity());
         loadingDialog.showDialog();
 

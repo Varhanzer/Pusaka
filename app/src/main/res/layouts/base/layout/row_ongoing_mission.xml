@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width  = "match_parent"
+    android:layout_height = "match_parent"
+    xmlns:android         = "http://schemas.android.com/apk/res/android" >
+
+    <ImageView
+        android:id                       = "@+id/iv_mission"
+        android:src                      = "@drawable/girl"
+        android:layout_width             = "80dp"
+        android:layout_height            = "80dp"
+        android:layout_marginTop         = "8dp"
+        android:layout_marginLeft        = "8dp"
+        android:layout_marginStart       = "8dp"
+        android:layout_marginBottom      = "8dp"
+        android:layout_alignParentLeft   = "true"
+        android:layout_alignParentStart  = "true"
+        android:layout_alignParentTop    = "true"
+        android:layout_alignParentBottom = "true"
+        android:contentDescription="@string/app_name" />
+
+    <TextView
+        android:id                 = "@+id/txtMissionIssuer"
+        android:layout_width       = "wrap_content"
+        android:layout_height      = "wrap_content"
+        android:layout_marginLeft  = "8dp"
+        android:layout_marginStart = "8dp"
+        android:layout_marginEnd   = "8dp"
+        android:layout_marginRight = "8dp"
+        android:layout_alignTop    = "@+id/iv_mission"
+        android:layout_toEndOf     = "@+id/iv_mission"
+        android:layout_toRightOf   = "@+id/iv_mission" />
+
+    <TextView
+        android:id                = "@+id/txtMissionName"
+        android:layout_width      = "wrap_content"
+        android:layout_height     = "wrap_content"
+        android:layout_toEndOf    = "@id/iv_mission"
+        android:layout_toRightOf  = "@id/iv_mission"
+        android:layout_below      = "@id/txtMissionIssuer"
+        android:layout_alignLeft  = "@id/txtMissionIssuer"
+        android:layout_alignStart = "@id/txtMissionIssuer"
+        android:layout_alignEnd   = "@id/txtMissionIssuer"
+        android:layout_alignRight = "@id/txtMissionIssuer" />
+
+    <LinearLayout
+        android:orientation        = "horizontal"
+        android:layout_width       = "wrap_content"
+        android:layout_height      = "wrap_content"
+        android:layout_toEndOf     = "@id/iv_mission"
+        android:layout_toRightOf   = "@id/iv_mission"
+        android:layout_alignLeft   = "@id/txtMissionIssuer"
+        android:layout_alignStart  = "@id/txtMissionIssuer"
+        android:layout_alignEnd    = "@id/txtMissionIssuer"
+        android:layout_alignRight  = "@id/txtMissionIssuer"
+        android:layout_alignBottom = "@id/iv_mission" >
+
+        <TextView
+            android:id             = "@+id/txtMissionDate"
+            android:layout_width   = "0dp"
+            android:layout_height  = "wrap_content"
+            android:layout_weight= "1" />
+
+        <LinearLayout
+            android:orientation   = "horizontal"
+            android:layout_width  = "wrap_content"
+            android:layout_height = "wrap_content">
+
+            <ImageView
+                android:src                = "@drawable/ic_star"
+                android:layout_width       = "20dp"
+                android:layout_height      = "20dp"
+                android:contentDescription = "@string/app_name" />
+
+            <TextView
+                android:id            = "@+id/txtPoint"
+                android:layout_width  = "wrap_content"
+                android:layout_height = "wrap_content" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

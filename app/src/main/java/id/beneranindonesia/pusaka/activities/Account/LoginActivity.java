@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.MainActivity;
@@ -57,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void signInSuccess() {
+        loadingDialog.hideDialog();
         Session.getInstance().initalizeSession(this);
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -65,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void signInFailed(int statusCode, String message) {
-        System.out.println(statusCode);
-        System.out.println(message);
+        loadingDialog.hideDialog();
+        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 }

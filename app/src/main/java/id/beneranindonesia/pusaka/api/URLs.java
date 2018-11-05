@@ -12,4 +12,6 @@ public class URLs {
     public static String CONTENT_DETAIL_URL   = SERVER + "content/get";
     public static String CONTENT_TAKE_MISSION = SERVER + "content/take";
 
+    public static String ONGOING_MISSION_LIST = SERVER + "/users/mission/list";
+
 }
