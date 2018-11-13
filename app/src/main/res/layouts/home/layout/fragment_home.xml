@@ -1,17 +1,55 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width  ="match_parent"
-    android:layout_height ="match_parent"
-    android:gravity       ="center"
-    android:orientation   ="vertical">
+    android:layout_height ="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id            ="@+id/recyclerView"
-        android:layout_width  ="match_parent"
-        android:layout_height ="match_parent"
-        android:padding="12dp"
-        />
+    <ImageView
+        android:src="@drawable/quarter_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="-12dp"
+        android:layout_marginRight="-12dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:contentDescription="@string/app_name"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <android.support.v7.widget.Toolbar
+            android:id            = "@+id/toolbar"
+            android:layout_width  = "match_parent"
+            android:layout_height = "?attr/actionBarSize"
+            android:background    = "@color/dark_slate_blue"
+            android:minHeight     = "?attr/actionBarSize"
+            android:theme         = "@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+            <ImageView
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:tint="@color/white"
+                android:src="@drawable/logo_typo"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.v7.widget.RecyclerView
+            android:id            ="@+id/recyclerView"
+            android:layout_width  ="match_parent"
+            android:layout_height ="match_parent"
+            android:padding="12dp"
+            />
 
 
-</LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

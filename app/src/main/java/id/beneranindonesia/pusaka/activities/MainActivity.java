@@ -1,14 +1,22 @@
 package id.beneranindonesia.pusaka.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import org.json.JSONObject;
 
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.Base.BaseActivity;
@@ -292,4 +300,41 @@ public class MainActivity extends BaseActivity implements
 //        getSupportActionBar().setTitle(title);
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("Main activity", "onActivityResult");
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Result not found", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_SHORT).show();
+
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
