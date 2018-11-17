@@ -45,6 +45,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="outputName" value="ic_star" />
+                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="f1c40f" />
                                     </map>
                                   </option>
                                 </PersistentState>

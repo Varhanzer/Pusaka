@@ -59,6 +59,7 @@
     <string name="mission_detail_participant">%1$s/%2$s partisipan</string>
     <string name="mission_detail_mission_taken">Misi Telah Diambil</string>
     <string name="mission_detail_take_mission">Ambil Misi</string>
+    <string name="mission_detail_scan_attendance">Scan absensi</string>
 
     <!-- Dialogs -->
     <string name="loading_dialog_text">Silahkan tunggu&#8230;</string>
@@ -75,6 +76,8 @@
     <string name="dummy_address">Jl. Abdurahman Saleh No. 26, RT. 4/RW. 5, Senen, Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10410</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat…</string>
 
+    <!-- Profile Fragment -->
+    <string name="btn_logout">Sign Out</string>
 </resources>
 
 

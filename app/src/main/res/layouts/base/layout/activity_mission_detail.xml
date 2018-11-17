@@ -12,7 +12,7 @@
         android:id                = "@+id/appBar"
         android:layout_width      = "match_parent"
         android:layout_height     = "wrap_content"
-        android:theme             = "@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:theme             = "@style/CollapsedBarTheme"
         android:fitsSystemWindows = "true" >
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -25,7 +25,7 @@
             android:fitsSystemWindows       = "true" >
 
             <ImageView
-                android:src="@drawable/dummy_background_paris"
+                android:src                ="@drawable/dummy_background_paris"
                 android:layout_width       = "match_parent"
                 android:layout_height      = "350dp"
                 android:contentDescription = "@string/app_name"
@@ -107,8 +107,8 @@
 
                     <ImageView
                         android:src                = "@drawable/gray_circle"
-                        android:layout_width       = "25dp"
-                        android:layout_height      = "25dp"
+                        android:layout_width       = "20dp"
+                        android:layout_height      = "20dp"
                         android:contentDescription = "@string/app_name"/>
 
                     <TextView
@@ -134,8 +134,8 @@
 
                     <ImageView
                         android:src                = "@drawable/gray_circle"
-                        android:layout_width       = "25dp"
-                        android:layout_height      = "25dp"
+                        android:layout_width       = "20dp"
+                        android:layout_height      = "20dp"
                         android:contentDescription = "@string/app_name"/>
 
                     <TextView
@@ -159,8 +159,8 @@
 
                     <ImageView
                         android:src                = "@drawable/gray_circle"
-                        android:layout_width       = "25dp"
-                        android:layout_height      = "25dp"
+                        android:layout_width       = "20dp"
+                        android:layout_height      = "20dp"
                         android:contentDescription = "@string/app_name"/>
 
                     <TextView
@@ -185,8 +185,8 @@
 
                     <ImageView
                         android:src                = "@drawable/gray_circle"
-                        android:layout_width       = "25dp"
-                        android:layout_height      = "25dp"
+                        android:layout_width       = "20dp"
+                        android:layout_height      = "20dp"
                         android:contentDescription = "@string/app_name"/>
 
                     <TextView

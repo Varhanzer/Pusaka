@@ -1,5 +1,7 @@
 package id.beneranindonesia.pusaka.api;
 
+import android.util.Log;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
@@ -34,8 +36,6 @@ public class ContentDetailAPI implements Token.TokenListener {
             json.put("userID", Session.getInstance().getUserID());
             json.put("missionID", missionID);
 
-            System.out.println(json);
-
             HashMap<String, String > params = new HashMap<>();
             params.put("pikachu", json.toString());
 
@@ -69,16 +69,12 @@ public class ContentDetailAPI implements Token.TokenListener {
                     @Override
                     public void onError(ANError anError) {
                         listener.contentDetailDidFailWith(anError.getErrorCode(), anError.getMessage());
-                        System.out.println("Error code: " + anError.getErrorCode());
-                        System.out.println("Message: " + anError.getMessage());
                     }
                 });
     }
 
     @Override
     public void tokenDidFail(int errorCode, String message) {
-        System.out.println("Error code: " + errorCode);
-        System.out.println("Message: " + message);
         listener.contentDetailDidFailWith(errorCode, message);
     }
 

@@ -31,6 +31,10 @@
         <item name="tabMode">fixed</item>
     </style>
 
+    <style name="CollapsedBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">@color/black</item>
+    </style>
+
 </resources>
 
 

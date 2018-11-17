@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.zxing.integration.android.IntentIntegrator;
 
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.MainActivity;
@@ -33,6 +34,8 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
     private Button btnTakeMission;
     private Dialog takeMissionDialog;
     private ContentDetailAPI contentDetailAPI;
+    private IntentIntegrator qrScan;
+
 
     private TextView txtOrg, txtMissionName, txtMissionDesc, txtMissionAddress, txtParticipant, txtMissionStartDate, txtMissionPlace;
 
@@ -57,7 +60,7 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.violet_trans_80));
 
         isServiceOK();
-
+        qrScan              = new IntentIntegrator(this);
         txtOrg              = findViewById(R.id.txtOrg);
         txtMissionName      = findViewById(R.id.txtMissionName);
         txtMissionDesc      = findViewById(R.id.txtMissionDesc);
@@ -76,13 +79,17 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
         if (v == btnTakeMission) {
-            takeMissionDialog = new Dialog(MissionDetailActivity.this);
-            takeMissionDialog.setContentView(R.layout.popup_claim_mission);
-            takeMissionDialog.getWindow().setBackgroundDrawableResource(android.R.color.holo_purple);
-            takeMissionDialog.show();
+            if (missionDetail.getMissionStatus().equals("1")) {
+                qrScan.initiateScan();
+            } else {
+                takeMissionDialog = new Dialog(MissionDetailActivity.this);
+                takeMissionDialog.setContentView(R.layout.popup_claim_mission);
+                takeMissionDialog.getWindow().setBackgroundDrawableResource(android.R.color.holo_purple);
+                takeMissionDialog.show();
 
-            Button btn_yes = takeMissionDialog.findViewById(R.id.btn_yes);
-            btn_yes.setOnClickListener(this);
+                Button btn_yes = takeMissionDialog.findViewById(R.id.btn_yes);
+                btn_yes.setOnClickListener(this);
+            }
         } else {
             takeMissionDialog.hide();
             takeMission();
@@ -122,12 +129,14 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
 
         if (missionDetail.getMissionStatus().equals("0")) {
             btnTakeMission.setText(R.string.mission_detail_take_mission);
-            btnTakeMission.setTextColor(getResources().getColor(R.color.white));
-            btnTakeMission.setBackgroundColor(this.getResources().getColor(R.color.selected_dot));
-        } else {
-            btnTakeMission.setText(R.string.mission_detail_mission_taken);
-            btnTakeMission.setTextColor(getResources().getColor(R.color.secondary_text));
-            btnTakeMission.setBackgroundColor(this.getResources().getColor(R.color.colorPrimaryDark));
+//            btnTakeMission.setText(R.string.mission_detail_take_mission);
+//            btnTakeMission.setTextColor(getResources().getColor(R.color.white));
+//            btnTakeMission.setBackgroundColor(this.getResources().getColor(R.color.selected_dot));
+        } else if (missionDetail.getMissionStatus().equals("1")){
+            btnTakeMission.setText(R.string.mission_detail_scan_attendance);
+//            btnTakeMission.setText(R.string.mission_detail_mission_taken);
+//            btnTakeMission.setTextColor(getResources().getColor(R.color.secondary_text));
+//            btnTakeMission.setBackgroundColor(this.getResources().getColor(R.color.colorPrimaryDark));
         }
 
     }

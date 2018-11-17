@@ -40,80 +40,40 @@ public class ContentDetail {
         return missionTypeID;
     }
 
-    public void setMissionTypeID(int missionTypeID) {
-        this.missionTypeID = missionTypeID;
-    }
-
     public String getOrgName() {
         return orgName;
-    }
-
-    public void setOrgName(String orgName) {
-        this.orgName = orgName;
     }
 
     public String getMisName() {
         return misName;
     }
 
-    public void setMisName(String misName) {
-        this.misName = misName;
-    }
-
     public String getMisImage() {
         return misImage;
-    }
-
-    public void setMisImage(String misImage) {
-        this.misImage = misImage;
     }
 
     public String getMisDesc() {
         return misDesc;
     }
 
-    public void setMisDesc(String misDesc) {
-        this.misDesc = misDesc;
-    }
-
     public double getLatitude() {
         return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
     }
 
     public double getLongtitude() {
         return longtitude;
     }
 
-    public void setLongtitude(double longtitude) {
-        this.longtitude = longtitude;
-    }
-
     public String getDayStart() {
         return dayStart;
-    }
-
-    public void setDayStart(String dayStart) {
-        this.dayStart = dayStart;
     }
 
     public String getMaxParticipant() {
         return maxParticipant;
     }
 
-    public void setMaxParticipant(String maxParticipant) {
-        this.maxParticipant = maxParticipant;
-    }
-
     public String getApplicants() {
         return applicants;
-    }
-
-    public void setApplicants(String applicants) {
-        this.applicants = applicants;
     }
 
     public String getMisAddress() {
@@ -128,25 +88,14 @@ public class ContentDetail {
         return misPlace;
     }
 
-    public void setMisPlace(String misPlace) {
-        this.misPlace = misPlace;
-    }
-
     public String getPointValue() {
         return pointValue;
-    }
-
-    public void setPointValue(String pointValue) {
-        this.pointValue = pointValue;
     }
 
     public String getMissionStatus() {
         return missionStatus;
     }
 
-    public void setMissionStatus(String missionStatus) {
-        this.missionStatus = missionStatus;
-    }
 }
 
 
