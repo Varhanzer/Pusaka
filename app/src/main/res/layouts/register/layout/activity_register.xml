@@ -58,11 +58,11 @@
 
             <ImageView
                 android:id="@+id/img_gender"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="32dp"
                 android:layout_marginTop="23dp"
+                android:layout_marginEnd="40dp"
                 android:elevation="10dp"
                 android:src="@drawable/boy" />
 
@@ -226,7 +226,7 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
                 android:paddingTop="7dp"
-                android:text="@string/login_login_now"
+                android:text="@string/register_register_now"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -259,6 +259,7 @@
 
                 <TextView
                     android:id="@+id/txtToLoginActivity"
+                    android:linksClickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/txt_dont_have_account"

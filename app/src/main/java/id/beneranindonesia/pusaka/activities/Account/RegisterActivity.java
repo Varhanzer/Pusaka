@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -30,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private RadioGroup rgGender;
     private Button registerBtn;
+    private TextView txtSignIn;
     private GradientDrawable registerBtnShape;
     private EditText et_fullname, et_school, et_account_name, et_email, et_password, et_confirm_password;
     private SignUpAPI signUpAPI;
@@ -51,6 +53,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         registerBtn = findViewById(R.id.btn_register);
         registerBtn.setOnClickListener(this);
+
+        txtSignIn = findViewById(R.id.txtToLoginActivity);
+        txtSignIn.setOnClickListener(this);
 
         LayerDrawable layerDrawable = (LayerDrawable) registerBtn.getBackground();
         registerBtnShape = (GradientDrawable) layerDrawable.findDrawableByLayerId(R.id.drawable_button);
@@ -84,6 +89,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
+        if (view ==txtSignIn){
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
         if (view == registerBtn) {
             String fullname        = et_fullname.getText().toString();
             String schollName      = et_school.getText().toString();
