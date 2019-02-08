@@ -40,6 +40,19 @@
     <string name="login_3rd_party">Atau masuk dengan:</string>
     <string name="login_login_now">Masuk Sekarang</string>
 
+    <!--Forgot Screen-->
+    <string name="forgot_header">Reset Kata Sandi</string>
+    <string name="forgot_send_code">Kirim Kode</string>
+    <string name="forgot_reset_pwd">Reset</string>
+    <string name="forgot_reset_guide">Masukkan alamat email yang kamu gunakan untuk mendaftar. Kami akan mengirim email berisi 4 digit angka yang bisa kamu gunakan untuk mereset kata sandimu.</string>
+    <string name="forgot_input_code">Masukkan 4 digit kode yang telah kamu terima untuk mereset kata sandimu.</string>
+    <string name="forgot_new_confirm_hint">Ketik ulang sandi baru</string>
+    <string name="forgot_new_confirm">Konfirmasi sandi baru</string>
+    <string name="forgot_new_hint">Masukkan sandi baru</string>
+    <string name="forgot_new">Sandi baru</string>
+    <string name="forgot_code_hint">Kode Verifikasi</string>
+    <string name="forgot_verifikasi">Verifikasi</string>
+
     <!--Register Screen-->
     <string name="register_title">Daftar Akun</string>
     <string name="register_data_title">D&#160;a&#160;t&#160;a&#160;&#160;&#160;P&#160;u&#160;s&#160;a&#160;k&#160;a&#160;w&#160;a&#160;n</string>
@@ -57,6 +70,7 @@
     <string name="register_password_hint">Kata Sandi Kamu</string>
     <string name="register_confirm_password">Konfirmasi Password</string>
     <string name="register_confirm_password_hint">Konfirmasi Kata Sandi Kamu</string>
+    <string name="register_register_now">Daftar Sekarang</string>
 
     <!-- Main Fragment -->
     <string name="dummy_total_participant">50 dari 120 partisipan</string>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import id.beneranindonesia.pusaka.R;
@@ -21,6 +22,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btn_login_back;
     private EditText txt_email;
     private EditText txt_password;
+    private TextView txt_register;
+    private TextView txt_forgot;
 
     private SignInAPI signInAPI;
     private LoadingDialog loadingDialog;
@@ -32,20 +35,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         txt_email       = findViewById(R.id.txtEmail);
         txt_password    = findViewById(R.id.txtPassword);
+        txt_register    = findViewById(R.id.txtToRegisterActivity);
+        txt_forgot      = findViewById(R.id.tv_forget_password);
         btn_get_started = findViewById(R.id.btn_get_started);
         btn_login_back  = findViewById(R.id.btn_login_back);
 
+
         btn_get_started.setOnClickListener(this);
         btn_login_back.setOnClickListener(this);
+        txt_register.setOnClickListener(this);
+        txt_forgot.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if (loadingDialog == null)
-            loadingDialog = new LoadingDialog(this);
-        loadingDialog.showDialog();
+        if (view == txt_forgot){
+            Intent intent = new Intent(LoginActivity.this, ForgotActivity.class);
+            startActivity(intent);
+        }
+        if (view == txt_register){
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
 
+        }
         if (view == btn_get_started) {
+            if (loadingDialog == null)
+                loadingDialog = new LoadingDialog(this);
+            loadingDialog.showDialog();
+
             if (signInAPI == null) {
                 signInAPI = new SignInAPI();
             }
@@ -58,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void signInSuccess() {
+
         loadingDialog.hideDialog();
         Session.getInstance().initalizeSession(this);
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
