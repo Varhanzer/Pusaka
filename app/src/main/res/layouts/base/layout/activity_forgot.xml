@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_forgot_back"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/ic_chevron_left_black"
+        android:backgroundTint="@color/white" />
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_forgot_back"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        card_view:cardCornerRadius="8pt">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_forgot_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="26dp"
+                android:text="@string/forgot_header"
+                android:textColor="@color/dark_slate_blue"
+                android:textSize="@dimen/ob_header_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_forgot_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_forgot_header"
+                android:text="@string/login_email"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/txt_forgot_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_forgot_email"
+                android:hint="@string/login_email_hint"
+                android:inputType="textEmailAddress" />
+
+
+            <TextView
+                android:id="@+id/tv_forgot_guide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_forgot_email"
+                android:text="@string/forgot_reset_guide"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_size" />
+
+            <Button
+                android:id="@+id/btnSendCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_forgot_guide"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button"
+                android:backgroundTint="@color/java_blue"
+                android:paddingLeft="25dp"
+                android:paddingTop="7dp"
+                android:paddingRight="25dp"
+                android:paddingBottom="7dp"
+                android:text="@string/forgot_send_code"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
