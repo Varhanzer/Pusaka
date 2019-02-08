@@ -13,13 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
         <activity android:name=".activities.Mission.AnswerQuestion.AnswerQuestionActivity"></activity>
-=======
         <activity android:name=".activities.Account.ForgotActivityReset"></activity>
         <activity android:name=".activities.Account.ForgotActivityCode" />
         <activity android:name=".activities.Account.ForgotActivity" />
->>>>>>> masterGitHub
         <activity android:name=".activities.Mission.AnswerQuestion.StartAnswerMissionActivity" />
 
         <meta-data

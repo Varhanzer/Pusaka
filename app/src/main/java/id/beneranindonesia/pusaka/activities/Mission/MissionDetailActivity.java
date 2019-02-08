@@ -106,10 +106,8 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MissionDetailActivity.this);
 
         if(available == ConnectionResult.SUCCESS) {
-            Log.d(TAG, "isServiceOK: Google Play Services is working");
             return true;
         } else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)) {
-            Log.d(TAG, "isServiceOK: an error occured ");
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MissionDetailActivity.this, available, ERROR_DIALOG_REQUEST);
             dialog.show();
         } else {
