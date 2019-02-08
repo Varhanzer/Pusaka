@@ -33,8 +33,6 @@ public class ContentListAPI implements Token.TokenListener {
             json.put("lang", "id");
             json.put("userID", Session.getInstance().getUserID());
 
-            System.out.println("Content List Params: " + json);
-
             HashMap<String, String > params = new HashMap<>();
             params.put("pikachu", json.toString());
 

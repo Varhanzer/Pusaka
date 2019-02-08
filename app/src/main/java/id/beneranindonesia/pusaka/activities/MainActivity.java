@@ -2,8 +2,13 @@ package id.beneranindonesia.pusaka.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +26,7 @@ import org.json.JSONObject;
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.Base.BaseActivity;
 import id.beneranindonesia.pusaka.activities.MyMission.MyMissionFragment;
+import id.beneranindonesia.pusaka.adapters.ViewPagerAdapter;
 import id.beneranindonesia.pusaka.fragments.BaseFragment;
 import id.beneranindonesia.pusaka.fragments.HomeFragment;
 import id.beneranindonesia.pusaka.fragments.NewsFragment;
@@ -45,12 +51,18 @@ public class MainActivity extends BaseActivity implements
         FragNavController.TransactionListener,
         FragNavController.RootFragmentListener {
 
+    private HomeFragment homeFragment;
+    private MyMissionFragment myMissionFragment;
+    private FragmentManager fragmentManager;
 
-    @BindView(R.id.content_frame)
-    FrameLayout contentFrame;
+    private MenuItem prevMenuItem;
 
-//    @BindView(R.id.toolbar)
-//    Toolbar toolbar;
+//    @BindView(R.id.viewPager)
+    private ViewPager viewPager;
+    private BottomNavigationView navigation;
+
+//    @BindView(R.id.content_frame)
+//    FrameLayout contentFrame;
 
     private int[] mTabIconsSelected = {
             R.drawable.tab_home,
@@ -60,11 +72,11 @@ public class MainActivity extends BaseActivity implements
             R.drawable.tab_profile};
 
 
-    @BindArray(R.array.tab_name)
-    String[] TABS;
-
-    @BindView(R.id.bottom_tab_layout)
-    TabLayout bottomTabLayout;
+//    @BindArray(R.array.tab_name)
+//    String[] TABS;
+//
+//    @BindView(R.id.bottom_tab_layout)
+//    TabLayout bottomTabLayout;
 
     private FragNavController mNavController;
 
@@ -75,66 +87,80 @@ public class MainActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ButterKnife.bind(this);
+        navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-//        initToolbar();
+        fragmentManager = getSupportFragmentManager();
+        homeFragment = new HomeFragment();
+        replaceFragment(homeFragment);
 
-        initTab();
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new HomeFragment(), "");
+        adapter.addFragment(new MyMissionFragment(), "");
 
-        fragmentHistory = new FragmentHistory();
+        viewPager = findViewById(R.id.viewPager);
+        viewPager.setAdapter(adapter);
+//        viewPager.setPageTransformer(false, new FadePageTransformer());
 
-        mNavController = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.content_frame)
-                .transactionListener(this)
-                .rootFragmentListener(this, TABS.length)
-                .build();
-
-        switchTab(0);
-
-        bottomTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-                fragmentHistory.push(tab.getPosition());
-
-                switchTab(tab.getPosition());
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+            public void onPageSelected(int position) {
+                if(prevMenuItem != null) {
+                    prevMenuItem.setChecked(false);
+                } else {
+                    navigation.getMenu().getItem(0).setChecked(false);
+                }
 
+                navigation.getMenu().getItem(position).setChecked(true);
+                prevMenuItem = navigation.getMenu().getItem(position);
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-                mNavController.clearStack();
-
-                switchTab(tab.getPosition());
+            public void onPageScrollStateChanged(int state) {
 
             }
         });
+
     }
 
-//    private void initToolbar() {
-//        setSupportActionBar(toolbar);
-//    }
-
-    private void initTab() {
-        if (bottomTabLayout != null) {
-            for (int i = 0; i < TABS.length; i++) {
-                bottomTabLayout.addTab(bottomTabLayout.newTab());
-                TabLayout.Tab tab = bottomTabLayout.getTabAt(i);
-                if (tab != null)
-                    tab.setCustomView(getTabView(i));
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.tab_missions:
+                    viewPager.setCurrentItem(0, false);
+//                    if(homeFragment == null) {
+//                        homeFragment = new HomeFragment();
+//                    }
+//                    replaceFragment(homeFragment);
+                    return true;
+                case R.id.tab_search  :
+                    viewPager.setCurrentItem(1, false);
+//                    if(myMissionFragment == null) {
+//                        myMissionFragment = new MyMissionFragment();
+//                    }
+//                    replaceFragment(myMissionFragment);
+                    return true;
+                case R.id.tab_share   : return true;
+                case R.id.tab_news    : return true;
+                case R.id.tab_profile : return true;
             }
+            return false;
         }
-    }
+    };
 
+    private void replaceFragment(@NonNull Fragment fragment) {
+//        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, fragment.getTag()).commit();
+    }
 
     private View getTabView(int position) {
         View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.tab_item_bottom, null);
-        ImageView icon = (ImageView) view.findViewById(R.id.tab_icon);
+        ImageView icon = view.findViewById(R.id.tab_icon);
         icon.setImageDrawable(Utils.setDrawableSelector(MainActivity.this, mTabIconsSelected[position], mTabIconsSelected[position]));
         return view;
     }
@@ -183,47 +209,47 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onBackPressed() {
-
-        if (!mNavController.isRootFragment()) {
-            mNavController.popFragment();
-        } else {
-
-            if (fragmentHistory.isEmpty()) {
-                super.onBackPressed();
-            } else {
-
-                if (fragmentHistory.getStackSize() > 1) {
-
-                    int position = fragmentHistory.popPrevious();
-
-                    switchTab(position);
-
-                    updateTabSelection(position);
-
-                } else {
-
-                    switchTab(0);
-
-                    updateTabSelection(0);
-
-                    fragmentHistory.emptyStack();
-                }
-            }
-
-        }
+//
+//        if (!mNavController.isRootFragment()) {
+//            mNavController.popFragment();
+//        } else {
+//
+//            if (fragmentHistory.isEmpty()) {
+//                super.onBackPressed();
+//            } else {
+//
+//                if (fragmentHistory.getStackSize() > 1) {
+//
+//                    int position = fragmentHistory.popPrevious();
+//
+//                    switchTab(position);
+//
+//                    updateTabSelection(position);
+//
+//                } else {
+//
+//                    switchTab(0);
+//
+//                    updateTabSelection(0);
+//
+//                    fragmentHistory.emptyStack();
+//                }
+//            }
+//
+//        }
     }
 
-    private void updateTabSelection(int currentTab) {
-
-        for (int i = 0; i < TABS.length; i++) {
-            TabLayout.Tab selectedTab = bottomTabLayout.getTabAt(i);
-            if (currentTab != i) {
-                selectedTab.getCustomView().setSelected(false);
-            } else {
-                selectedTab.getCustomView().setSelected(true);
-            }
-        }
-    }
+//    private void updateTabSelection(int currentTab) {
+//
+//        for (int i = 0; i < TABS.length; i++) {
+//            TabLayout.Tab selectedTab = bottomTabLayout.getTabAt(i);
+//            if (currentTab != i) {
+//                selectedTab.getCustomView().setSelected(false);
+//            } else {
+//                selectedTab.getCustomView().setSelected(true);
+//            }
+//        }
+//    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -315,10 +341,23 @@ public class MainActivity extends BaseActivity implements
         }
     }
 }
+ class FadePageTransformer implements ViewPager.PageTransformer {
 
+    public void transformPage(View view, float position) {
+        if(position <= -1.0F || position >= 1.0F) {
+            view.setTranslationX(view.getWidth() * position);
+            view.setAlpha(0.0F);
+        } else if( position == 0.0F ) {
+            view.setTranslationX(view.getWidth() * position);
+            view.setAlpha(1.0F);
+        } else {
+            // position is between -1.0F & 0.0F OR 0.0F & 1.0F
+            view.setTranslationX(view.getWidth() * -position);
+            view.setAlpha(1.0F - Math.abs(position));
+        }
+    }
 
-
-
+}
 
 
 

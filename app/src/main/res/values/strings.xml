@@ -10,6 +10,14 @@
         <item>Profile</item>
     </array>
 
+    <!-- navigation name -->
+    <string name="navigation_home">Home</string>
+    <string name="navigation_search">Search</string>
+    <string name="navigation_share">Share</string>
+    <string name="navigation_news">News</string>
+    <string name="navigation_profile">Profile</string>
+
+
     <!-- OnBoard Screen. -->
 
     <string name="ob_header1">Temukan Banyak\nSahabat Baru</string>
@@ -78,6 +86,11 @@
 
     <!-- Profile Fragment -->
     <string name="btn_logout">Sign Out</string>
+    
+    <!-- Answer Question Activity -->
+    <string name="start">Mulai</string>
+    <string name="answer_question">Jawab pertanyaan\nsecepat mungkin</string>
+    
 </resources>
 
 

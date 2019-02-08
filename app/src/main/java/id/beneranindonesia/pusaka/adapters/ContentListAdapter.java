@@ -10,73 +10,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.models.ContentList;
+import id.beneranindonesia.pusaka.models.Mission;
 import id.beneranindonesia.pusaka.utils.Session;
 
 public class ContentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public interface OnClickListener {
-        void selectedItem(ContentList contentList);
-    }
-
-    class ContentListViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtMissionName;
-        private TextView txtMissionDesc;
-        private TextView txtMissionPoint;
-        private TextView txtPerticipant;
-
-        ContentListViewHolder(View view) {
-            super(view);
-            txtMissionName  = view.findViewById(R.id.txtMissionTitle);
-            txtMissionDesc  = view.findViewById(R.id.txtMissionDesc);
-            txtMissionPoint = view.findViewById(R.id.txtMissionPoint);
-            txtPerticipant  = view.findViewById(R.id.txtPerticipant);
-        }
-
-        void setDetails(ContentList contentList) {
-            txtMissionName.setText(contentList.getMisName());
-//            txtMissionDesc.setText(contentList.getMisDesc());
-            txtMissionPoint.setText(contentList.getPoint());
-            String participant = context.getResources().getString(R.string.total_participant, contentList.getApplicants(), contentList.getMaxParticipant());
-            txtPerticipant.setText(participant);
-            txtMissionDesc.setText("Beneran Indonesia");
-        }
-    }
-
-    class ProfileViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtUsername;
-        private TextView txtFullName;
-        private TextView txtSchool;
-        private ImageView imgUser;
-
-        ProfileViewHolder(View view) {
-            super(view);
-            txtUsername = view.findViewById(R.id.textUsername);
-            txtFullName = view.findViewById(R.id.textFullName);
-            txtSchool   = view.findViewById(R.id.textSchool);
-            imgUser     = view.findViewById(R.id.userImageView);
-        }
-
-        void setDetails() {
-            txtUsername.setText(Session.getInstance().getNickname());
-            txtFullName.setText(Session.getInstance().getNickname());
-            txtSchool.setText(Session.getInstance().getNickname());
-        }
-    }
-
     private Context context;
-    private ArrayList<ContentList> contentLists;
+
+    private List<Mission> missionList;
+
     public OnClickListener listener;
 
-    public ContentListAdapter(Context context, ArrayList<ContentList> contentLists) {
-        this.context      = context;
-        this.contentLists = contentLists;
+    public ContentListAdapter(Context context, List<Mission> missionList) {
+        this.context     = context;
+        this.missionList = missionList;
     }
 
-    public void setItems(ArrayList<ContentList> lists) {
-        this.contentLists = lists;
+    public void setItems(List<Mission> missionList) {
+        this.missionList = missionList;
     }
 
     @Override
@@ -103,19 +58,69 @@ public class ContentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             profileViewHolder.setDetails();
         } else {
             ContentListViewHolder contentListViewHolder = (ContentListViewHolder) holder;
-            final ContentList contentList = contentLists.get(position - 1);
-            contentListViewHolder.setDetails(contentList);
+            final Mission mission = missionList.get(position - 1);
+            contentListViewHolder.setDetails(mission);
             contentListViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) { listener.selectedItem(contentList); }
+                public void onClick(View v) { listener.selectedItem(mission); }
             });
         }
     }
 
     @Override
     public int getItemCount() {
-        return contentLists == null ? 0 : contentLists.size() + 1;
+        return missionList == null ? 0 : missionList.size() + 1;
     }
+
+    class ContentListViewHolder extends RecyclerView.ViewHolder {
+        private TextView txtMissionName;
+        private TextView txtMissionDesc;
+        private TextView txtMissionPoint;
+        private TextView txtPerticipant;
+
+        ContentListViewHolder(View view) {
+            super(view);
+            txtMissionName  = view.findViewById(R.id.txtMissionTitle);
+            txtMissionDesc  = view.findViewById(R.id.txtMissionDesc);
+            txtMissionPoint = view.findViewById(R.id.txtMissionPoint);
+            txtPerticipant  = view.findViewById(R.id.txtPerticipant);
+        }
+
+        void setDetails(Mission mission) {
+            txtMissionName.setText(mission.getMissionName());
+            txtMissionDesc.setText(mission.getMissionDesc());
+            txtMissionPoint.setText(mission.getPoint());
+            String participant = context.getResources().getString(R.string.total_participant, mission.getApplicants(), mission.getMaxParticipant());
+            txtPerticipant.setText(participant);
+            txtMissionDesc.setText("Beneran Indonesia");
+        }
+    }
+
+    class ProfileViewHolder extends RecyclerView.ViewHolder {
+        private TextView txtUsername;
+        private TextView txtFullName;
+        private TextView txtSchool;
+        private ImageView imgUser;
+
+        ProfileViewHolder(View view) {
+            super(view);
+            txtUsername = view.findViewById(R.id.textUsername);
+            txtFullName = view.findViewById(R.id.textFullName);
+            txtSchool   = view.findViewById(R.id.textSchool);
+            imgUser     = view.findViewById(R.id.userImageView);
+        }
+
+        void setDetails() {
+            txtUsername.setText(Session.getInstance().getNickname());
+            txtFullName.setText(Session.getInstance().getNickname());
+            txtSchool.setText(Session.getInstance().getNickname());
+        }
+    }
+
+    public interface OnClickListener {
+        void selectedItem(Mission mission);
+    }
+
 }
 
 

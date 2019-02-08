@@ -26,16 +26,6 @@ public class Token {
 
     public TokenListener listener;
 
-//    private static Token instance;
-//
-//    static {
-//        instance = new Token();
-//    }
-
-//    public static Token getInstance() {
-//        return instance;
-//    }
-
     public void get() {
         if (!ACCESS_TOKEN.isEmpty() && !TOKEN_TYPE.isEmpty() && !SID.isEmpty() && !EXPIRES_IN.isEmpty()) {
             listener.tokenReceived(ACCESS_TOKEN, TOKEN_TYPE, SID, EXPIRES_IN);
@@ -82,7 +72,6 @@ public class Token {
                             SID          = "";
                             listener.tokenDidFail(0, "Failed to get value from token json");
                         }
-                        System.out.println(response);
                     }
 
                     @Override
