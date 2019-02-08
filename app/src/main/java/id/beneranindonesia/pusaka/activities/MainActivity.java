@@ -57,26 +57,14 @@ public class MainActivity extends BaseActivity implements
 
     private MenuItem prevMenuItem;
 
-//    @BindView(R.id.viewPager)
-    private ViewPager viewPager;
-    private BottomNavigationView navigation;
+    @BindView(R.id.viewPager)
+    ViewPager viewPager;
+
+    @BindView(R.id.navigation)
+    BottomNavigationView navigation;
 
 //    @BindView(R.id.content_frame)
 //    FrameLayout contentFrame;
-
-    private int[] mTabIconsSelected = {
-            R.drawable.tab_home,
-            R.drawable.tab_search,
-            R.drawable.tab_share,
-            R.drawable.tab_news,
-            R.drawable.tab_profile};
-
-
-//    @BindArray(R.array.tab_name)
-//    String[] TABS;
-//
-//    @BindView(R.id.bottom_tab_layout)
-//    TabLayout bottomTabLayout;
 
     private FragNavController mNavController;
 
@@ -87,22 +75,17 @@ public class MainActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        ButterKnife.bind(this);
 
-        fragmentManager = getSupportFragmentManager();
-        homeFragment = new HomeFragment();
-        replaceFragment(homeFragment);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(), "");
         adapter.addFragment(new MyMissionFragment(), "");
 
-        viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
-//        viewPager.setPageTransformer(false, new FadePageTransformer());
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -124,6 +107,7 @@ public class MainActivity extends BaseActivity implements
             public void onPageScrollStateChanged(int state) {
 
             }
+
         });
 
     }
@@ -134,17 +118,9 @@ public class MainActivity extends BaseActivity implements
             switch (item.getItemId()) {
                 case R.id.tab_missions:
                     viewPager.setCurrentItem(0, false);
-//                    if(homeFragment == null) {
-//                        homeFragment = new HomeFragment();
-//                    }
-//                    replaceFragment(homeFragment);
                     return true;
                 case R.id.tab_search  :
                     viewPager.setCurrentItem(1, false);
-//                    if(myMissionFragment == null) {
-//                        myMissionFragment = new MyMissionFragment();
-//                    }
-//                    replaceFragment(myMissionFragment);
                     return true;
                 case R.id.tab_share   : return true;
                 case R.id.tab_news    : return true;
@@ -154,14 +130,10 @@ public class MainActivity extends BaseActivity implements
         }
     };
 
-    private void replaceFragment(@NonNull Fragment fragment) {
-//        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, fragment.getTag()).commit();
-    }
-
     private View getTabView(int position) {
         View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.tab_item_bottom, null);
         ImageView icon = view.findViewById(R.id.tab_icon);
-        icon.setImageDrawable(Utils.setDrawableSelector(MainActivity.this, mTabIconsSelected[position], mTabIconsSelected[position]));
+//        icon.setImageDrawable(Utils.setDrawableSelector(MainActivity.this, mTabIconsSelected[position], mTabIconsSelected[position]));
         return view;
     }
 
@@ -340,23 +312,6 @@ public class MainActivity extends BaseActivity implements
             }
         }
     }
-}
- class FadePageTransformer implements ViewPager.PageTransformer {
-
-    public void transformPage(View view, float position) {
-        if(position <= -1.0F || position >= 1.0F) {
-            view.setTranslationX(view.getWidth() * position);
-            view.setAlpha(0.0F);
-        } else if( position == 0.0F ) {
-            view.setTranslationX(view.getWidth() * position);
-            view.setAlpha(1.0F);
-        } else {
-            // position is between -1.0F & 0.0F OR 0.0F & 1.0F
-            view.setTranslationX(view.getWidth() * -position);
-            view.setAlpha(1.0F - Math.abs(position));
-        }
-    }
-
 }
 
 

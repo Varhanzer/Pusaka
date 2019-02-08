@@ -21,6 +21,7 @@
         <item name="actionMenuTextColor">@color/violet</item>
         <item name="android:colorBackground">@color/dark_slate_blue</item>
         <item name="android:statusBarColor">@color/dark_slate_blue</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="BottomTabLayout" parent="Widget.Design.TabLayout">

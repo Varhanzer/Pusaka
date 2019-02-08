@@ -78,11 +78,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
         setHasOptionsMenu(true);
 
-        int k = 0;
-
-        for(int i = 0 ; i < 10; i++, k = 0) {
-
-        }
     }
 
     @Override
@@ -104,8 +99,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.getItemAnimator().setChangeDuration(0);
-
-        Log.d("HomeFragment", "onCreateView Called");
 
         getMissions();
 
@@ -130,12 +123,10 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 adapter.listener = new ContentListAdapter.OnClickListener() {
                     @Override
                     public void selectedItem(Mission mission) {
-                        Intent intent = new Intent(getActivity(), StartAnswerMissionActivity.class);
+                        Intent intent = new Intent(getActivity(), MissionDetailActivity.class);
                         intent.putExtra("MISSION_ID", mission.getMissionID());
                         startActivity(intent);
-//                        Intent intent = new Intent(getActivity(), MissionDetailActivity.class);
-//                        intent.putExtra("MISSION_ID", mission.getMissionID());
-//                        startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
                 };
                 recyclerView.setAdapter(adapter);

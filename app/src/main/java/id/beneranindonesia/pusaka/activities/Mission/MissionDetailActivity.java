@@ -1,6 +1,7 @@
 package id.beneranindonesia.pusaka.activities.Mission;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
@@ -20,6 +21,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.MainActivity;
+import id.beneranindonesia.pusaka.activities.Mission.AnswerQuestion.StartAnswerMissionActivity;
 import id.beneranindonesia.pusaka.api.ContentDetailAPI;
 import id.beneranindonesia.pusaka.api.TakeMissionAPI;
 import id.beneranindonesia.pusaka.models.ContentDetail;
@@ -80,7 +82,10 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         if (v == btnTakeMission) {
             if (missionDetail.getMissionStatus().equals("1")) {
-                qrScan.initiateScan();
+//                qrScan.initiateScan();
+                Intent intent = new Intent(this, StartAnswerMissionActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             } else {
                 takeMissionDialog = new Dialog(MissionDetailActivity.this);
                 takeMissionDialog.setContentView(R.layout.popup_claim_mission);
@@ -97,7 +102,6 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
     }
 
     public boolean isServiceOK() {
-        Log.d(TAG, "isServiceOK: checking google services version");
 
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MissionDetailActivity.this);
 
