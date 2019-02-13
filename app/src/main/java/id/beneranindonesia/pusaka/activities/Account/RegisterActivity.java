@@ -95,7 +95,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
         if (view == registerBtn) {
             String fullname        = et_fullname.getText().toString();
-            String schollName      = et_school.getText().toString();
+            String schoolName      = et_school.getText().toString();
             final String accountName     = et_account_name.getText().toString();
             String email           = et_email.getText().toString();
             String username        = et_account_name.getText().toString();
