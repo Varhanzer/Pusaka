@@ -5,4 +5,8 @@
     <color name="dark_violet">#352567</color>
     <color name="amber">#FFBE00</color>
     <color name="brightyel">#FFEA00</color>
+    <color name="dark_slate_blue">#2F2879</color>
+    <color name="violet">#673AB7</color>
+    <color name="dark">#784594</color>
+    <color name="pink">#F773AB</color>
 </resources>
