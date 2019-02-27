@@ -69,8 +69,10 @@ public class SignInAPI implements Token.TokenListener {
                     }
                     @Override
                     public void onError(ANError anError) {
-                        System.out.println(anError.getErrorCode());
-                        System.out.println(anError.getMessage());
+                        listener.signInFailed(anError.getErrorCode(), anError.getErrorBody());
+                        System.out.println(anError.getErrorBody());
+                        System.out.println(anError.getErrorDetail());
+                        System.out.println(anError.getResponse().body());
                     }
                 });
     }

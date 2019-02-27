@@ -1,5 +1,6 @@
 package id.beneranindonesia.pusaka.viewmodels;
 
+import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
@@ -12,14 +13,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.List;
 
-import id.beneranindonesia.pusaka.api.GetDataService;
+import id.beneranindonesia.pusaka.api.ApiService;
 import id.beneranindonesia.pusaka.api.RetrofitClientInstance;
-import id.beneranindonesia.pusaka.api.Token_1;
 import id.beneranindonesia.pusaka.models.Contents;
 import id.beneranindonesia.pusaka.models.Mission;
 import id.beneranindonesia.pusaka.repositories.MissionListRepositories;
 import id.beneranindonesia.pusaka.utils.Session;
-import id.beneranindonesia.pusaka.utils.TokenManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,71 +35,33 @@ public class MissionListViewModel extends ViewModel {
 
     }
 
-    public void init() {
-        if (mRepo != null)
-            return;
-        mRepo = MissionListRepositories.getInstance();
-    }
-
-    public LiveData<List<Mission>> getMissions(Context context) {
+    public LiveData<List<Mission>> getMissions() {
         if(mMissions == null) {
             mMissions = new MutableLiveData<>();
-            loadMissions(context);
         }
+        loadMissions();
         return mMissions;
     }
 
-    private void loadMissions(final Context context) {
+    private void loadMissions() {
         try {
-            GetDataService service = RetrofitClientInstance.getInstance().create(GetDataService.class);
+
+            ApiService service = RetrofitClientInstance.getInstance().create(ApiService.class);
 
             JSONObject json = new JSONObject();
             json.put("lang", "id");
             json.put("userID", Session.getInstance().getUserID());
 
-            HashMap<String, String> header = new HashMap<>();
-            header.put("Authorization", "bearer " + TokenManager.ACCESS_TOKEN);
+            HashMap<String, String> params = new HashMap<>();
+            params.put("pikachu", json.toString());
 
-            HashMap<String, String> body = new HashMap<>();
-            body.put("pikachu", json.toString());
-
-            Call<Contents> call = service.getMissions(header, body);
+            Call<Contents> call = service.getMissions(params);
 
             call.enqueue(new Callback<Contents>() {
                 @Override
                 public void onResponse(Call<Contents> call, Response<Contents> response) {
-
                     if(response.code() == 200 && response.body() != null) {
-
-                        Log.d("MissionListViewModel", "list content received");
-
                         mMissions.setValue(response.body().getListContent());
-
-                        for(Mission mission: response.body().getListContent()) {
-                            Log.d("Mission Name", mission.getMissionName());
-                        }
-
-                    } else if (response.code() == 401) {
-
-                        TokenManager tokenManager = new TokenManager();
-                        tokenManager.listener = new TokenManager.Listener() {
-
-                            @Override
-                            public void getTokenSuccess(Token_1 token) {
-                                loadMissions(context);
-                            }
-
-                            @Override
-                            public void getTokenFailed(int errorCode, String message) {
-                                Log.e("Token Error", errorCode + message);
-                            }
-
-                        };
-
-                        tokenManager.getToken(context);
-
-                    } else {
-
                     }
                 }
 
@@ -109,6 +70,8 @@ public class MissionListViewModel extends ViewModel {
                     Log.d("MISSIONLISTIVEW TOKEN", t.getMessage());
                 }
             });
+
+
         } catch (JSONException e) {
 
             Log.d("TAG", e.getMessage());

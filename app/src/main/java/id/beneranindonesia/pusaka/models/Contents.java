@@ -13,8 +13,8 @@ public class Contents {
     private List<Mission> listContent;
 
     public Contents(Profile profile, List<Mission> missions) {
-        this.profile = profile;
-        this.listContent = missions;
+//        this.profile = profile;
+//        this.listContent = missions;
     }
 
     public Profile getProfile() {
