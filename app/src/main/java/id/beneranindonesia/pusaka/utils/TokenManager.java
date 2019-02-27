@@ -36,7 +36,7 @@ public class TokenManager {
         return instance;
     }
 
-    public void getToken(final Context context) {
+    public void getToken() {
         GetDataService service = RetrofitClientInstance.getInstance().create(GetDataService.class);
 
         HashMap<String, String> hashMap = new HashMap<>();
@@ -55,7 +55,7 @@ public class TokenManager {
                         json.put("token_type", response.body().getToken_type());
 
                         TokenManager.ACCESS_TOKEN = response.body().getAccess_token();
-                        saveToken(json.toString(), context);
+//                        saveToken(json.toString(), context);
                         listener.getTokenSuccess(response.body());
                     } catch (NullPointerException | JSONException e) {
                         listener.getTokenFailed(0, e.getLocalizedMessage());

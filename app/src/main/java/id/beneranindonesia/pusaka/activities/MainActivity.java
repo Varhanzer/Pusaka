@@ -82,6 +82,7 @@ public class MainActivity extends BaseActivity implements
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(), "");
         adapter.addFragment(new MyMissionFragment(), "");
+        adapter.addFragment(new ProfileFragment(), "");
 
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -124,7 +125,9 @@ public class MainActivity extends BaseActivity implements
                     return true;
                 case R.id.tab_share   : return true;
                 case R.id.tab_news    : return true;
-                case R.id.tab_profile : return true;
+                case R.id.tab_profile :
+                    viewPager.setCurrentItem(4, false);
+                    return true;
             }
             return false;
         }

@@ -1,13 +1,10 @@
 package id.beneranindonesia.pusaka.activities;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import id.beneranindonesia.pusaka.R;
-import id.beneranindonesia.pusaka.activities.Mission.MissionDetailActivity;
 import id.beneranindonesia.pusaka.activities.OnBoard.OnBoardingActivity;
 import id.beneranindonesia.pusaka.utils.Session;
 
