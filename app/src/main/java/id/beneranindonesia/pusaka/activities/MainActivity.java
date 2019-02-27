@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -53,8 +54,10 @@ public class MainActivity extends BaseActivity implements
 
     private HomeFragment homeFragment;
     private MyMissionFragment myMissionFragment;
+    private NewsFragment newsFragment;
     private FragmentManager fragmentManager;
 
+    private Toolbar toolbar;
     private MenuItem prevMenuItem;
 
     @BindView(R.id.viewPager)
@@ -62,9 +65,6 @@ public class MainActivity extends BaseActivity implements
 
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
-
-//    @BindView(R.id.content_frame)
-//    FrameLayout contentFrame;
 
     private FragNavController mNavController;
 
@@ -82,9 +82,11 @@ public class MainActivity extends BaseActivity implements
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(), "");
         adapter.addFragment(new MyMissionFragment(), "");
+        adapter.addFragment(new NewsFragment(), "");
 
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -112,6 +114,7 @@ public class MainActivity extends BaseActivity implements
 
     }
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -123,8 +126,11 @@ public class MainActivity extends BaseActivity implements
                     viewPager.setCurrentItem(1, false);
                     return true;
                 case R.id.tab_share   : return true;
-                case R.id.tab_news    : return true;
+                case R.id.tab_news    :
+                    viewPager.setCurrentItem(2, false);
+                    return true;
                 case R.id.tab_profile : return true;
+
             }
             return false;
         }
@@ -133,7 +139,6 @@ public class MainActivity extends BaseActivity implements
     private View getTabView(int position) {
         View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.tab_item_bottom, null);
         ImageView icon = view.findViewById(R.id.tab_icon);
-//        icon.setImageDrawable(Utils.setDrawableSelector(MainActivity.this, mTabIconsSelected[position], mTabIconsSelected[position]));
         return view;
     }
 
@@ -181,47 +186,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onBackPressed() {
-//
-//        if (!mNavController.isRootFragment()) {
-//            mNavController.popFragment();
-//        } else {
-//
-//            if (fragmentHistory.isEmpty()) {
-//                super.onBackPressed();
-//            } else {
-//
-//                if (fragmentHistory.getStackSize() > 1) {
-//
-//                    int position = fragmentHistory.popPrevious();
-//
-//                    switchTab(position);
-//
-//                    updateTabSelection(position);
-//
-//                } else {
-//
-//                    switchTab(0);
-//
-//                    updateTabSelection(0);
-//
-//                    fragmentHistory.emptyStack();
-//                }
-//            }
-//
-//        }
     }
-
-//    private void updateTabSelection(int currentTab) {
-//
-//        for (int i = 0; i < TABS.length; i++) {
-//            TabLayout.Tab selectedTab = bottomTabLayout.getTabAt(i);
-//            if (currentTab != i) {
-//                selectedTab.getCustomView().setSelected(false);
-//            } else {
-//                selectedTab.getCustomView().setSelected(true);
-//            }
-//        }
-//    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -273,7 +238,6 @@ public class MainActivity extends BaseActivity implements
                 return new HomeFragment();
             case FragNavController.TAB2:
                 return new MyMissionFragment();
-//                return new SearchFragment();
             case FragNavController.TAB3:
                 return new ShareFragment();
             case FragNavController.TAB4:
@@ -284,18 +248,7 @@ public class MainActivity extends BaseActivity implements
         }
         throw new IllegalStateException("Need to send an index that we know");
     }
-
-
-//    private void updateToolbarTitle(int position){
-//
-//
-//        getSupportActionBar().setTitle(TABS[position]);
-//
-//    }
-
     public void updateToolbarTitle(String title) {
-
-//        getSupportActionBar().setTitle(title);
 
     }
 

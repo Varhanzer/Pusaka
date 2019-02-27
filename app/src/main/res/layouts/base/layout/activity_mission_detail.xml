@@ -285,7 +285,7 @@
                     android:layout_weight = "0.25"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    tools:context         = ".MapsActivity"
+                    tools:context         = ".activities.Mission.MapsActivity"
                     android:name          = "com.google.android.gms.maps.SupportMapFragment" />
 
             </LinearLayout>

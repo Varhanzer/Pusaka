@@ -1,11 +1,12 @@
 package id.beneranindonesia.pusaka.activities.Mission.AnswerQuestion;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import id.beneranindonesia.pusaka.R;
+import id.beneranindonesia.pusaka.activities.Mission.CompassDirection;
 
 public class StartAnswerMissionActivity extends AppCompatActivity {
 
@@ -22,7 +23,7 @@ public class StartAnswerMissionActivity extends AppCompatActivity {
     }
 
     public void startGame(View view) {
-        Intent intent = new Intent(this, AnswerQuestionActivity.class);
+        Intent intent = new Intent(this, CompassDirection.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

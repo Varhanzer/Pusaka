@@ -11,10 +11,10 @@ import id.beneranindonesia.pusaka.R;
 
 public class AnswerQuestionActivity extends AppCompatActivity {
 
-    @BindView(R.id.txtCountdown)
-    TextView txtCountdown;
-
-    CountDownTimer cTimer;
+//    @BindView(R.id.txtCountdown)
+//    TextView txtCountdown;
+//
+//    CountDownTimer cTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,27 +27,27 @@ public class AnswerQuestionActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        startTimer();
+        //startTimer();
     }
 
-    private void startTimer() {
-        cTimer = new CountDownTimer(30000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                txtCountdown.setText("" + millisUntilFinished / 1000);
-            }
+//    private void startTimer() {
+//        cTimer = new CountDownTimer(30000, 1000) {
+//            @Override
+//            public void onTick(long millisUntilFinished) {
+//                txtCountdown.setText("" + millisUntilFinished / 1000);
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//
+//            }
+//        };
+//        cTimer.start();
+//    }
 
-            @Override
-            public void onFinish() {
-
-            }
-        };
-        cTimer.start();
-    }
-
-    private void cancelTimer() {
-        if (cTimer != null)
-            cTimer.cancel();
-    }
+//    private void cancelTimer() {
+//        if (cTimer != null)
+//            cTimer.cancel();
+//    }
 
 }
