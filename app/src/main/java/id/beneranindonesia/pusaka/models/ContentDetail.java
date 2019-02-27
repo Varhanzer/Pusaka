@@ -1,23 +1,52 @@
 package id.beneranindonesia.pusaka.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ContentDetail {
-    private int missionTypeID     = 0;
-    private String orgName        = "";
-    private String misName        = "";
-    private String misImage       = "";
-    private String misDesc        = "";
-    private double latitude       = 0;
-    private double longtitude     = 0;
-    private String dayStart       = "";
+    @SerializedName("missionTypeID")
+    private int missionTypeID = 0;
+
+    @SerializedName("orgName")
+    private String orgName = "";
+
+    @SerializedName("misName")
+    private String misName = "";
+
+    @SerializedName("misImage")
+    private String misImage = "";
+
+    @SerializedName("misDesc")
+    private String misDesc = "";
+
+    @SerializedName("latitude")
+    private double latitude = 0;
+
+    @SerializedName("longitude")
+    private double longtitude = 0;
+
+    @SerializedName("dayStart")
+    private String dayStart = "";
+
+    @SerializedName("maxParticipant")
     private String maxParticipant = "";
-    private String applicants     = "";
-    private String misAddress     = "";
-    private String misPlace       = "";
-    private String pointValue     = "";
-    private String missionStatus  = "";
+
+    @SerializedName("applicants")
+    private String applicants = "";
+
+    @SerializedName("misAddress")
+    private String misAddress = "";
+
+    @SerializedName("misPlace")
+    private String misPlace = "";
+
+    @SerializedName("pointValue")
+    private String pointValue = "";
+
+    @SerializedName("missionstatus")
+    private String missionStatus = "";
 
     public ContentDetail(JSONObject json) {
         try { this.missionTypeID = json.getInt("missionTypeID"); } catch (JSONException e) { e.printStackTrace(); }

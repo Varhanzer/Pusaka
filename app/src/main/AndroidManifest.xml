@@ -46,9 +46,9 @@
         </activity>
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.OnBoard.OnBoardingActivity" />
-        <activity android:name=".activities.Account.LoginActivity" />
-        <activity android:name=".activities.Account.RegisterActivity" />
-        <activity android:name=".activities.Mission.MissionDetailActivity" />
+        <activity android:name=".activities.Account.login.view.LoginActivity" />
+        <activity android:name=".activities.Account.register.RegisterActivity" />
+        <activity android:name=".activities.Mission.Detail.MissionDetailActivity" />
     </application>
 
 </manifest>

@@ -12,13 +12,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import id.beneranindonesia.pusaka.R;
-import id.beneranindonesia.pusaka.activities.Account.LoginActivity;
-import id.beneranindonesia.pusaka.activities.Account.RegisterActivity;
+import id.beneranindonesia.pusaka.activities.Account.login.view.LoginActivity;
+import id.beneranindonesia.pusaka.activities.Account.register.RegisterActivity;
 
 public class OnBoardingActivity extends AppCompatActivity implements View.OnClickListener {
 

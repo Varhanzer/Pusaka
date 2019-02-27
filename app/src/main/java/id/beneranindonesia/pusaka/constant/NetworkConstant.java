@@ -2,7 +2,7 @@ package id.beneranindonesia.pusaka.constant;
 
 public class NetworkConstant {
 
-    public static String SERVER = "http://api-dev.beneranindonesiapps.com";
+    public static String SERVER = "http://api-dev.beneranindonesiapps.com/";
 
     public static String TOKEN_URL = SERVER + "token";
 
