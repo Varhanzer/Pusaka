@@ -48,50 +48,6 @@ public class MissionListRepositories implements Token.TokenListener {
     }
 
     public void getMissions() {
-//        try {
-//            GetDataService service = RetrofitClientInstance.getInstance().create(GetDataService.class);
-//
-//            JSONObject json = new JSONObject();
-//            json.put("lang", "id");
-//            json.put("iserOD", Session.getInstance().getUserID());
-//
-//            HashMap<String, String> header = new HashMap<>();
-//            header.put("Authorization", "bearer " + TokenManager.getInstance());
-//
-//            HashMap<String, String> body = new HashMap<>();
-//            body.put("pikachu", json.toString());
-//
-//            Call<Contents> call = service.getMissions(header, body);
-//
-//            call.enqueue(new Callback<List<Mission>>() {
-//                @Override
-//                public void onResponse(Call<List<Mission>> call, Response<List<Mission>> response) {
-//                    if(response.code() == 200 && response.body() != null) {
-//                        Log.d("Mission count", response.body().size() + "");
-//                    } else if (response.code() == 401) {
-//                        TokenManager tokenManager = new TokenManager();
-//                        tokenManager.listener = new TokenManager.Listener() {
-//                            @Override
-//                            public void getTokenSuccess(Token_1 token) {
-//                                getMissions();
-//                            }
-//
-//                            @Override
-//                            public void getTokenFailed(int errorCode, String message) {
-//                                Log.e("Token Error", errorCode + message);
-//                            }
-//                        };
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<List<Mission>> call, Throwable t) {
-//                    Log.d("GETTOKENFAILURE", t.getMessage());
-//                }
-//            });
-//        } catch (JSONException e) {
-//            Log.e("TAG", e.getMessage());
-//        }
     }
 
     @Override

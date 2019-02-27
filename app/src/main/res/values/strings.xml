@@ -116,6 +116,14 @@
     <string name="RateSum">Rate this App</string>
     <string name="ShareSum">Share Pusaka with your friends!</string>
     <string name="LogoutSum">Logout from Pusaka</string>
+
+    <!-- List Pos -->
+    <string name="Pos1">Pos 1</string>
+    <string name="Pos2">Pos 2</string>
+    <string name="Pos3">Pos 3</string>
+    <string name="Pos4">Pos 4</string>
+    <string name="Pos5">Pos 5</string>
+    <string name="start">Mulai</string>
 </resources>
 
 

@@ -82,10 +82,10 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         if (v == btnTakeMission) {
             if (missionDetail.getMissionStatus().equals("1")) {
-//                qrScan.initiateScan();
-                Intent intent = new Intent(this, StartAnswerMissionActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                qrScan.initiateScan();
+//                Intent intent = new Intent(this, StartAnswerMissionActivity.class);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             } else {
                 takeMissionDialog = new Dialog(MissionDetailActivity.this);
                 takeMissionDialog.setContentView(R.layout.popup_claim_mission);
@@ -170,6 +170,7 @@ public class MissionDetailActivity extends AppCompatActivity implements View.OnC
         takeMissionAPI.listener = this;
         takeMissionAPI.take(missionID);
     }
+
 
     @Override
     public void takeSuccess() {

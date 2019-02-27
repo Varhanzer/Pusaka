@@ -3,27 +3,27 @@
 
     <item
         android:id="@+id/tab_missions"
-        android:icon="@drawable/home24"
+        android:icon="@drawable/home72"
         android:title="@string/navigation_home" />
 
     <item
         android:id="@+id/tab_search"
-        android:icon="@drawable/ongoing24"
+        android:icon="@drawable/ongoing72"
         android:title="@string/navigation_search" />
 
     <item
         android:id="@+id/tab_share"
-        android:icon="@drawable/lock24"
+        android:icon="@drawable/lock72"
         android:title="@string/navigation_share" />
 
     <item
         android:id="@+id/tab_news"
-        android:icon="@drawable/lock24"
+        android:icon="@drawable/lock72"
         android:title="@string/navigation_settings" />
 
     <item
         android:id="@+id/tab_profile"
-        android:icon="@drawable/lock24"
+        android:icon="@drawable/lock72"
         android:title="Profile" />
 
 </menu>
