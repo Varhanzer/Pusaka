@@ -67,7 +67,7 @@
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
                     android:paddingTop="7dp"
-                    android:text="@string/start"
+                    android:text="@string/startpos"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="16sp" />

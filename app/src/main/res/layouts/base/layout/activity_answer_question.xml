@@ -55,68 +55,45 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <Button
-                    android:id="@+id/btnA"
-                    android:layout_width="35dp"
-                    android:layout_height="36dp"
-                    android:layout_below="@id/textView5"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="33dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/button"
-                    android:backgroundTint="@color/white"
-                    android:paddingLeft="25dp"
-                    android:paddingTop="7dp"
-                    android:paddingRight="25dp"
-                    android:paddingBottom="7dp" />
 
-                <Button
-                    android:id="@+id/btnB"
-                    android:layout_width="35dp"
-                    android:layout_height="36dp"
-                    android:layout_below="@id/btnA"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/button"
-                    android:backgroundTint="@color/white"
-                    android:paddingLeft="25dp"
-                    android:paddingTop="7dp"
-                    android:paddingRight="25dp"
-                    android:paddingBottom="7dp" />
-
-
-                <TextView
-                    android:id="@+id/textA"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/textView5"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_toRightOf="@+id/btnA"
-                    android:text="1998"
-                    android:textColor="@color/white"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical"
+                    android:id="@+id/rdGroup"
+                    android:layout_below="@+id/textView5">
 
-                <TextView
-                    android:id="@+id/textB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textA"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_toRightOf="@+id/btnB"
-                    android:text="2018"
-                    android:textColor="@color/white"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    <RadioButton
+                        android:id="@+id/choice_a"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="50dp"
+                        android:text=" 1998"
+                        android:textColor="@color/white"
+                        android:textSize="30dp"
+                        android:style="@style/MyRadioButton"/>
+
+                    <RadioButton
+                        android:id="@+id/choice_b"
+                        android:layout_below="@id/choice_a"
+                        android:layout_alignStart="@+id/choice_a"
+                        android:text=" 2018"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="50dp"
+                        android:textSize="30dp"
+                        android:style="@style/MyRadioButton"/>
+
+                </RadioGroup>
 
                 <Button
                     android:id="@+id/btnSubmit"
+                    android:layout_below="@id/rdGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/btnB"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
@@ -128,7 +105,7 @@
                     android:text="Submit"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="16dp" />
+                    android:textSize="20dp"/>
 
 
             </RelativeLayout>

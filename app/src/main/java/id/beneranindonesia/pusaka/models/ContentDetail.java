@@ -45,7 +45,7 @@ public class ContentDetail {
     @SerializedName("pointValue")
     private String pointValue = "";
 
-    @SerializedName("missionstatus")
+    @SerializedName("missionStatus")
     private String missionStatus = "";
 
     public ContentDetail(JSONObject json) {

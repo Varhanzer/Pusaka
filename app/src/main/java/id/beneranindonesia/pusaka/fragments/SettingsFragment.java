@@ -3,15 +3,11 @@ package id.beneranindonesia.pusaka.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.TextView;
 
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.MainActivity;
@@ -21,13 +17,11 @@ import butterknife.ButterKnife;
 import id.beneranindonesia.pusaka.activities.OnBoard.OnBoardingActivity;
 import id.beneranindonesia.pusaka.utils.Session;
 
-import static id.beneranindonesia.pusaka.fragments.BaseFragment.ARGS_INSTANCE;
+
+public class SettingsFragment extends BaseFragment {
 
 
-public class NewsFragment extends BaseFragment {
-
-
-   int fragCount;
+    int fragCount;
 
     @BindView(R.id.btnAboutUs)
     Button btnAbout;
@@ -40,14 +34,14 @@ public class NewsFragment extends BaseFragment {
 
 
 
-    public static NewsFragment newInstance(int instance) {
+    public static SettingsFragment newInstance(int instance) {
         Bundle args = new Bundle();
         args.putInt(ARGS_INSTANCE, instance);
-        NewsFragment fragment = new NewsFragment();
+        SettingsFragment fragment = new SettingsFragment();
         fragment.setArguments(args);
         return fragment;
 
-   }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +54,7 @@ public class NewsFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_news, container, false);
+        View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         ButterKnife.bind(this, view);
 

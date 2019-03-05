@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         rgGender = findViewById(R.id.rg_gender);
         rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
+                @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 ImageView imgGender = findViewById(R.id.img_gender);
 

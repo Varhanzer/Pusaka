@@ -29,9 +29,9 @@ import id.beneranindonesia.pusaka.activities.MyMission.MyMissionFragment;
 import id.beneranindonesia.pusaka.adapters.ViewPagerAdapter;
 import id.beneranindonesia.pusaka.fragments.BaseFragment;
 import id.beneranindonesia.pusaka.fragments.HomeFragment;
-import id.beneranindonesia.pusaka.fragments.NewsFragment;
 import id.beneranindonesia.pusaka.fragments.ProfileFragment;
 import id.beneranindonesia.pusaka.fragments.SearchFragment;
+import id.beneranindonesia.pusaka.fragments.SettingsFragment;
 import id.beneranindonesia.pusaka.fragments.ShareFragment;
 import id.beneranindonesia.pusaka.utils.FragmentHistory;
 import id.beneranindonesia.pusaka.utils.Session;
@@ -124,7 +124,9 @@ public class MainActivity extends BaseActivity implements
                     viewPager.setCurrentItem(1, false);
                     return true;
                 case R.id.tab_share   : return true;
-                case R.id.tab_news    : return true;
+                case R.id.tab_settings    :
+                    viewPager.setCurrentItem(3, false);
+                    return true;
                 case R.id.tab_profile :
                     viewPager.setCurrentItem(4, false);
                     return true;
@@ -184,47 +186,8 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onBackPressed() {
-//
-//        if (!mNavController.isRootFragment()) {
-//            mNavController.popFragment();
-//        } else {
-//
-//            if (fragmentHistory.isEmpty()) {
-//                super.onBackPressed();
-//            } else {
-//
-//                if (fragmentHistory.getStackSize() > 1) {
-//
-//                    int position = fragmentHistory.popPrevious();
-//
-//                    switchTab(position);
-//
-//                    updateTabSelection(position);
-//
-//                } else {
-//
-//                    switchTab(0);
-//
-//                    updateTabSelection(0);
-//
-//                    fragmentHistory.emptyStack();
-//                }
-//            }
-//
-//        }
-    }
 
-//    private void updateTabSelection(int currentTab) {
-//
-//        for (int i = 0; i < TABS.length; i++) {
-//            TabLayout.Tab selectedTab = bottomTabLayout.getTabAt(i);
-//            if (currentTab != i) {
-//                selectedTab.getCustomView().setSelected(false);
-//            } else {
-//                selectedTab.getCustomView().setSelected(true);
-//            }
-//        }
-//    }
+    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -280,7 +243,7 @@ public class MainActivity extends BaseActivity implements
             case FragNavController.TAB3:
                 return new ShareFragment();
             case FragNavController.TAB4:
-                return new NewsFragment();
+                return new SettingsFragment();
             case FragNavController.TAB5:
                 return new ProfileFragment();
 
