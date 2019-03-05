@@ -4,24 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
-import org.json.JSONObject;
 
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.Base.BaseActivity;
@@ -30,15 +24,10 @@ import id.beneranindonesia.pusaka.adapters.ViewPagerAdapter;
 import id.beneranindonesia.pusaka.fragments.BaseFragment;
 import id.beneranindonesia.pusaka.fragments.HomeFragment;
 import id.beneranindonesia.pusaka.fragments.ProfileFragment;
-import id.beneranindonesia.pusaka.fragments.SearchFragment;
-import id.beneranindonesia.pusaka.fragments.SettingsFragment;
 import id.beneranindonesia.pusaka.fragments.ShareFragment;
 import id.beneranindonesia.pusaka.utils.FragmentHistory;
-import id.beneranindonesia.pusaka.utils.Session;
-import id.beneranindonesia.pusaka.utils.Utils;
 import id.beneranindonesia.pusaka.views.FragNavController;
 
-import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
