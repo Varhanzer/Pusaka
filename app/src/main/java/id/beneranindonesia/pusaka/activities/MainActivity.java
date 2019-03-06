@@ -24,6 +24,7 @@ import id.beneranindonesia.pusaka.adapters.ViewPagerAdapter;
 import id.beneranindonesia.pusaka.fragments.BaseFragment;
 import id.beneranindonesia.pusaka.fragments.HomeFragment;
 import id.beneranindonesia.pusaka.fragments.ProfileFragment;
+import id.beneranindonesia.pusaka.fragments.SettingsFragment;
 import id.beneranindonesia.pusaka.fragments.ShareFragment;
 import id.beneranindonesia.pusaka.utils.FragmentHistory;
 import id.beneranindonesia.pusaka.views.FragNavController;
@@ -43,6 +44,7 @@ public class MainActivity extends BaseActivity implements
     private HomeFragment homeFragment;
     private MyMissionFragment myMissionFragment;
     private FragmentManager fragmentManager;
+    private SettingsFragment fragmentSettings;
 
     private MenuItem prevMenuItem;
 
@@ -72,6 +74,7 @@ public class MainActivity extends BaseActivity implements
         adapter.addFragment(new HomeFragment(), "");
         adapter.addFragment(new MyMissionFragment(), "");
         adapter.addFragment(new ProfileFragment(), "");
+        adapter.addFragment(new SettingsFragment(), "");
 
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -127,7 +130,6 @@ public class MainActivity extends BaseActivity implements
     private View getTabView(int position) {
         View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.tab_item_bottom, null);
         ImageView icon = view.findViewById(R.id.tab_icon);
-//        icon.setImageDrawable(Utils.setDrawableSelector(MainActivity.this, mTabIconsSelected[position], mTabIconsSelected[position]));
         return view;
     }
 
@@ -145,7 +147,6 @@ public class MainActivity extends BaseActivity implements
 
     private void switchTab(int position) {
         mNavController.switchTab(position);
-//      updateToolbarTitle(position);
     }
 
     @Override
@@ -211,11 +212,8 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onFragmentTransaction(Fragment fragment, FragNavController.TransactionType transactionType) {
-        //do fragmentty stuff. Maybe change title, I'm not going to tell you how to live your life
-        // If we have a backstack, show the back button
         if (getSupportActionBar() != null && mNavController != null) {
 
-//            updateToolbar();
 
         }
     }
@@ -228,7 +226,6 @@ public class MainActivity extends BaseActivity implements
                 return new HomeFragment();
             case FragNavController.TAB2:
                 return new MyMissionFragment();
-//                return new SearchFragment();
             case FragNavController.TAB3:
                 return new ShareFragment();
             case FragNavController.TAB4:
@@ -241,16 +238,7 @@ public class MainActivity extends BaseActivity implements
     }
 
 
-//    private void updateToolbarTitle(int position){
-//
-//
-//        getSupportActionBar().setTitle(TABS[position]);
-//
-//    }
-
     public void updateToolbarTitle(String title) {
-
-//        getSupportActionBar().setTitle(title);
 
     }
 

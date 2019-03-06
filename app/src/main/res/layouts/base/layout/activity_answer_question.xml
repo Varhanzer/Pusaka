@@ -71,8 +71,7 @@
                         android:layout_marginLeft="50dp"
                         android:text=" 1998"
                         android:textColor="@color/white"
-                        android:textSize="30dp"
-                        android:style="@style/MyRadioButton"/>
+                        android:textSize="30dp" style="@style/MyRadioButton"/>
 
                     <RadioButton
                         android:id="@+id/choice_b"
@@ -85,7 +84,7 @@
                         android:padding="10dp"
                         android:layout_marginLeft="50dp"
                         android:textSize="30dp"
-                        android:style="@style/MyRadioButton"/>
+                        style="@style/MyRadioButton"/>
 
                 </RadioGroup>
 
