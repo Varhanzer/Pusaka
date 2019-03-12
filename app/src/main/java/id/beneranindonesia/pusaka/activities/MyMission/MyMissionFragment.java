@@ -53,6 +53,7 @@ public class MyMissionFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        adapter.addFragment(new PendingMissionFragment(), "PENDING");
         adapter.addFragment(new OnGoingMissionFragment(), "BERLANGSUNG");
         adapter.addFragment(new CompletedMissionFragment(), "SELESAI");
         viewPager.setAdapter(adapter);

@@ -9,14 +9,29 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.beneranindonesia.pusaka.R;
 import id.beneranindonesia.pusaka.activities.Mission.AnswerQuestion.StartAnswerMissionActivity;
+import id.beneranindonesia.pusaka.activities.Mission.MapsActivity;
+import id.beneranindonesia.pusaka.api.ApiService;
+import id.beneranindonesia.pusaka.api.RetrofitClientInstance;
 import id.beneranindonesia.pusaka.models.ContentDetail;
 import id.beneranindonesia.pusaka.utils.LoadingDialog;
+import id.beneranindonesia.pusaka.utils.Session;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MissionDetailActivity extends AppCompatActivity {
 
@@ -50,6 +65,7 @@ public class MissionDetailActivity extends AppCompatActivity {
     private IntentIntegrator qrScan;
 
     private String missionID;
+    private String qrString;
     private ContentDetail missionDetail;
     private LoadingDialog loadingDialog;
 
@@ -65,7 +81,7 @@ public class MissionDetailActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if(getSupportActionBar() != null)
+        if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingToolbar);
@@ -86,7 +102,7 @@ public class MissionDetailActivity extends AppCompatActivity {
         btnTakeMission.setOnClickListener(v -> {
             if (missionDetail.getMissionStatus().equals("1")) {
 //                qrScan.initiateScan();
-                Intent intent = new Intent(this, StartAnswerMissionActivity.class);
+                Intent intent = new Intent(this, MapsActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             } else {
@@ -132,23 +148,53 @@ public class MissionDetailActivity extends AppCompatActivity {
 
     }
 
-//    private void takeMission() {
-//        TakeMissionAPI takeMissionAPI = new TakeMissionAPI();
-//        takeMissionAPI.listener = this;
-//        takeMissionAPI.take(missionID);
-//    }
-//
-//    @Override
-//    public void takeSuccess() {
-//        getMissionDetail();
-//    }
-//
-//    @Override
-//    public void takeFailed(int statusCode, String message) {
-//
-//    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode, data);
+        if(result != null){
+            if(result.getContents()==null){
+                Toast.makeText(this, "Silahkan scan ulang", Toast.LENGTH_LONG).show();
+            }
+            else{
+                qrString = result.getContents();
+                qrSignIn(qrString);
+            }
+        }
+        else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 
+    private void qrSignIn(String qrString) {
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("userID", Session.getInstance().getUserID());
+            jsonObject.put("lang", "id");
+            jsonObject.put("qrString", qrString);
+
+
+            HashMap<String, String> params = new HashMap<>();
+            params.put("pikachu", jsonObject.toString());
+
+            ApiService apiService = RetrofitClientInstance.getInstance().create(ApiService.class);
+            apiService.qrSignin(params).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if (response.code() == 200) {
+                        Toast.makeText(MissionDetailActivity.this, "Selamat kamu berhasil masuk pos!", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(MissionDetailActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
 
 
 

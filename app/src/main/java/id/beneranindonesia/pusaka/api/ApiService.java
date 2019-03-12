@@ -32,4 +32,12 @@ public interface ApiService {
     @POST("/content/get")
     Call<ContentDetail> getMissionDetail(@FieldMap HashMap<String, String> params);
 
+    @FormUrlEncoded
+    @POST("/auth/forgot")
+    Call<String> forgot(@FieldMap HashMap<String, String> params);
+
+    @FormUrlEncoded
+    @POST("/users/missions/signin")
+    Call<String> qrSignin(@FieldMap HashMap<String, String> params);
+
 }

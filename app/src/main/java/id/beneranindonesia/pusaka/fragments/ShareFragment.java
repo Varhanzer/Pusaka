@@ -30,7 +30,7 @@ public class ShareFragment extends BaseFragment {
 
         ButterKnife.bind(this, view);
 
-        ((MainActivity) getActivity()).updateToolbarTitle("Share");
+        ((MainActivity) getActivity()).updateToolbarTitle("Leaderboard");
 
         return view;
     }

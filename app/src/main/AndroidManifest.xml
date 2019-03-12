@@ -17,8 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fragments.SettingsFragment"></activity>
-        <activity android:name=".activities.Mission.PosActivity" />
+        <activity android:name=".activities.Mission.UploadActivity"></activity>
+        <activity android:name=".activities.Mission.PendingMission" />
+        <activity android:name=".fragments.SettingsFragment" />
         <activity android:name=".activities.Mission.CompassDirection" />
 
         <meta-data

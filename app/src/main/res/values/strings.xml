@@ -106,6 +106,10 @@
     <string name="start">Mulai</string>
     <string name="answer_question">Jawab pertanyaan\nsecepat mungkin</string>
 
+    <!-- Answer Question Activity -->
+    <string name="upload_instruction">Upload fotomu ke instagram, setelah itu kirim hasil blabla</string>
+    <string name="upload">Upload</string>
+
     <!-- Settings -->
     <string name="AboutUs">About Us</string>
     <string name="RateUs">Rate Us</string>

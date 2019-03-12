@@ -52,76 +52,31 @@ import id.beneranindonesia.pusaka.activities.Mission.directionhelpers.TaskLoaded
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, TaskLoadedCallback {
 
         private GoogleMap mMap;
-        private MarkerOptions place1, place2;
-        Button getDirection;
-        private Polyline currentPolyline;
-        private LocationManager locationManager;
-        private GPSTracker gps;
-
 
 
     @Override
         protected void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_maps);
-            locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
-
-            getDirection = findViewById(R.id.btnMulai);
-
-            getDirection.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    gps = new GPSTracker(MapsActivity.this);
-                    new FetchURL(MapsActivity.this).execute(getUrl(place1.getPosition(), place2.getPosition(), "driving"), "driving");
-                    if(gps.canGetLocation()){
-                        double latitude = gps.getLatitude();
-                        double longitude = gps.getLongitude();
-
-                        place1 = new MarkerOptions().position(new LatLng(latitude, longitude)).title("You are here");
-                        place2 = new MarkerOptions().position(new LatLng(27.667491, 85.3208583)).title("Location 2");
-                    } else{
-                        gps.showSettingsAlert();
-                    }
-
-                }
-            });
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-            mapFragment.getMapAsync(this);
-            mapFragment.getMapAsync(this);
         }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney, Australia, and move the camera.
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
 
 
     @Override
-        public void onMapReady(GoogleMap googleMap) {
-            mMap = googleMap;
-            Log.d("mylog", "Added Markers");
-            mMap.addMarker(place1);
-            mMap.addMarker(place2);
-        }
+    public void onTaskDone(Object... values) {
 
-
-        private String getUrl(LatLng origin, LatLng dest, String directionMode) {
-            // Origin of route
-            String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
-            // Destination of route
-            String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
-            // Mode
-            String mode = "mode=" + directionMode;
-            // Building the parameters to the web service
-            String parameters = str_origin + "&" + str_dest + "&" + mode;
-            // Output format
-            String output = "json";
-            // Building the url to the web service
-            String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + getString(R.string.google_maps_key);
-            return url;
-        }
-
-        @Override
-        public void onTaskDone(Object... values) {
-            if (currentPolyline != null)
-                currentPolyline.remove();
-            currentPolyline = mMap.addPolyline((PolylineOptions) values[0]);
-        }
-
+    }
 }

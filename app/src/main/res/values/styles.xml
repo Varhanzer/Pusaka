@@ -42,6 +42,9 @@
 
     </style>
 
+    <style name="darkBackground" parent="AppTheme.Base">
+        <item name="color">@color/dark_violet</item></style>
+
 </resources>
 
 

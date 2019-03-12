@@ -2,7 +2,7 @@ package id.beneranindonesia.pusaka.api;
 
 public class URLs {
 
-    private static String SERVER = "http://api-dev.beneranindonesiapps.com/";
+    private static String SERVER = "http://dev-pusaka.beneranindonesia.id/";
 
     public static String TOKEN_URL   = SERVER + "token";
     public static String SIGN_UP_URL = SERVER + "auth/signup";
