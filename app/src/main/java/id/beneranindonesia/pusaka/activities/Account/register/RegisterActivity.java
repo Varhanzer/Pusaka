@@ -113,13 +113,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             startActivity(intent);
         }
         if (view == registerBtn) {
-            String fullname          = etFullName.getText().toString();
-            String schollName        = etSchool.getText().toString();
-            final String accountName = et_account_name.getText().toString();
-            String email             = et_email.getText().toString();
-            String username          = et_account_name.getText().toString();
-            String password          = et_password.getText().toString();
-            String confirmPassword   = et_confirm_password.getText().toString();
+            String fullname        = et_fullname.getText().toString();
+            String schoolName      = et_school.getText().toString();
+            final String accountName     = et_account_name.getText().toString();
+            String email           = et_email.getText().toString();
+            String username        = et_account_name.getText().toString();
+            String password        = et_password.getText().toString();
+            String confirmPassword = et_confirm_password.getText().toString();
             if (!password.equals(confirmPassword)) {
                 Toast.makeText(this, "Password kamu tidak sama, coba dicek lagi", Toast.LENGTH_SHORT).show();
                 return;
