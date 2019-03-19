@@ -105,28 +105,46 @@
                     </RadioGroup>
 
                     <TextView
-                        android:id="@+id/tv_full_name"
+                        android:id="@+id/tv_firstname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/rg_gender"
                         android:layout_marginTop="26dp"
-                        android:text="@string/register_full_name"
+                        android:text="@string/register_firstname"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/text_size" />
 
                     <EditText
-                        android:id="@+id/txt_full_name"
+                        android:id="@+id/txt_firstname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_full_name"
-                        android:hint="@string/register_full_name_hint"
+                        android:layout_below="@id/tv_firstname"
+                        android:hint="@string/register_firstname_hint"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:id="@+id/tv_lastname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_firstname"
+                        android:layout_marginTop="26dp"
+                        android:text="@string/register_lastname"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/text_size" />
+
+                    <EditText
+                        android:id="@+id/txt_lastname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_lastname"
+                        android:hint="@string/register_lastname_hint"
                         android:inputType="textPersonName" />
 
                     <TextView
                         android:id="@+id/tv_school"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txt_full_name"
+                        android:layout_below="@id/txt_lastname"
                         android:layout_marginTop="16dp"
                         android:text="@string/register_school"
                         android:textColor="@color/grey"

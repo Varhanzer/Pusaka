@@ -59,8 +59,10 @@
     <string name="register_data_title">D&#160;a&#160;t&#160;a&#160;&#160;&#160;P&#160;u&#160;s&#160;a&#160;k&#160;a&#160;w&#160;a&#160;n</string>
     <string name="register_male">Laki-Laki</string>
     <string name="register_female">Perempuan</string>
-    <string name="register_full_name">Nama Lengkap</string>
-    <string name="register_full_name_hint">Nama Lengkap Kamu</string>
+    <string name="register_firstname">Nama Depan</string>
+    <string name="register_firstname_hint">Nama Depan Kamu</string>
+    <string name="register_lastname">Nama Belakang</string>
+    <string name="register_lastname_hint">Nama Belakang Kamu</string>
     <string name="register_school">Sekolah</string>
     <string name="register_school_hint">Nama Sekolah Kamu</string>
     <string name="register_account_name">Nama Akun</string>
@@ -105,6 +107,7 @@
     <!-- Answer Question Activity -->
     <string name="start">Mulai</string>
     <string name="answer_question">Jawab pertanyaan\nsecepat mungkin</string>
+    <string name="inputAnswer">Masukkan kode rahasia</string>
 
     <!-- Answer Question Activity -->
     <string name="upload_instruction">Upload fotomu ke instagram, setelah itu kirim hasil blabla</string>

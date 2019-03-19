@@ -44,8 +44,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @BindView(R.id.txtToLoginActivity)
     TextView txtSignIn;
 
-    @BindView(R.id.txt_full_name)
-    EditText etFullName;
+    @BindView(R.id.txt_firstname)
+    EditText etFirstName;
+
+    @BindView(R.id.txt_lastname)
+    EditText etLastname;
 
     @BindView(R.id.txt_school)
     EditText etSchool;
@@ -61,7 +64,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        etFullName         = findViewById(R.id.txt_full_name);
+        etFirstName         = findViewById(R.id.txt_firstname);
+        etLastname          =   findViewById(R.id.txt_lastname);
         etSchool           = findViewById(R.id.txt_school);
         et_account_name     = findViewById(R.id.txt_account_name);
         et_email            = findViewById(R.id.txt_email);
@@ -113,8 +117,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             startActivity(intent);
         }
         if (view == registerBtn) {
-            String fullname        = et_fullname.getText().toString();
-            String schoolName      = et_school.getText().toString();
+            String firstname      = etFirstName.getText().toString();
+            String lastname      = etLastname.getText().toString();
             final String accountName     = et_account_name.getText().toString();
             String email           = et_email.getText().toString();
             String username        = et_account_name.getText().toString();
@@ -128,12 +132,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 JSONObject json = new JSONObject();
                 json.put("email", email);
                 json.put("password", password);
-                json.put("lang", "id");
+                json.put("firstName", firstname);
+                json.put("lastName", lastname);
                 json.put("userName", username);
-                json.put("fullName", fullname);
-                json.put("cardType", 1);
-                json.put("cardImage", "woahhhah.jpg");
-                json.put("cardNumber", "3882348484842");
+                json.put("expiredInHours", 24);
+                json.put("gender",0 );
+                json.put("lang", "id");
 
                 HashMap<String, String> params = new HashMap<>();
                 params.put("pikachu", json.toString());
