@@ -4,7 +4,8 @@ import java.util.HashMap;
 
 import id.beneranindonesia.pusaka.models.ContentDetail;
 import id.beneranindonesia.pusaka.models.Contents;
-import id.beneranindonesia.pusaka.models.GameQuestion;
+import id.beneranindonesia.pusaka.models.GameClueQuestion;
+import id.beneranindonesia.pusaka.models.GameQuiz;
 import id.beneranindonesia.pusaka.models.User;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
@@ -44,6 +45,8 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("/question/game")
-    Call<GameQuestion> getQuestion(@FieldMap HashMap<String, String> params);
+    Call<GameClueQuestion> getClue(@FieldMap HashMap<String, String> params);
+    Call <GameQuiz> getQuiz(@FieldMap HashMap<String, String> params);
+
 
 }

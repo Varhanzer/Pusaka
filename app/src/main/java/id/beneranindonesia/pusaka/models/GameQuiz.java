@@ -4,22 +4,31 @@ import com.google.gson.annotations.SerializedName;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class GameQuestion {
+import java.util.ArrayList;
+import java.util.List;
 
-    /*response: "questionText":"type string",
-"answerText":"type string",
-"getPoint":"type integer"*/
+public class GameQuiz {
+    /*response :
+{
+"questionText":"type string",
+"answerList":["type array string"],
+"answerIndex":"type integer",
+"getPoint":"type integer"
+}
+*/
 
     @SerializedName("questionText")
     private String questionText = "";
 
-    @SerializedName("answerText")
-    private String answerText = "";
+
+
+    @SerializedName("answerIndex")
+    private int answerIndex = 0;
 
     @SerializedName("getPoint")
     private int getPoint = 0;
 
-    public GameQuestion(JSONObject json) {
+    public GameQuiz(JSONObject json) {
         try {
             questionText = json.getString("questionText");
         } catch (JSONException e) {
